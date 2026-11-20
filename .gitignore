@@ -1,0 +1,25 @@
+# Segredos e ambiente
+.env
+.env.*
+!.env.example
+
+# Java / Maven
+target/
+*.log
+mvn-verify.log
+HELP.md
+
+# Node / Vite
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# IDEs e SO
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.iml
+*.swp
+.DS_Store
+Thumbs.db
