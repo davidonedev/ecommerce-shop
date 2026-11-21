@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 
 @Import(TestcontainersConfiguration.class)
-@SpringBootTest(properties = "app.jwt.secret=test-secret-with-at-least-32-bytes-long!!")
+@SpringBootTest
 @AutoConfigureMockMvc
 class PingEndpointTests {
 
