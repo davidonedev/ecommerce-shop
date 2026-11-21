@@ -1,0 +1,4 @@
+# Carregado só nos testes (classpath:/config/ é mesclado com o application.yml principal).
+app:
+  jwt:
+    secret: segredo-somente-para-testes-com-mais-de-32-bytes
