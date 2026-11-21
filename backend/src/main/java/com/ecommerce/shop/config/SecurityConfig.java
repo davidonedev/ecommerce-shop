@@ -15,19 +15,23 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.ecommerce.shop.auth.JwtAuthenticationFilter;
+import com.ecommerce.shop.auth.JwtService;
+
 /**
- * Configuração base de segurança. A autenticação JWT será adicionada na feature de usuários;
- * por enquanto apenas health, documentação e o endpoint de ping são públicos.
+ * Segurança stateless com JWT. Públicos: health, documentação, ping, registro e login.
+ * O restante exige "Authorization: Bearer &lt;token&gt;".
  */
 @Configuration
 public class SecurityConfig {
 
 	@Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain securityFilterChain(HttpSecurity http, JwtService jwtService) throws Exception {
 		http
 			.csrf(AbstractHttpConfigurer::disable)
 			.cors(Customizer.withDefaults())
@@ -37,7 +41,10 @@ public class SecurityConfig {
 				.requestMatchers("/actuator/health/**", "/actuator/info").permitAll()
 				.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
 				.requestMatchers(HttpMethod.GET, "/api/ping").permitAll()
-				.anyRequest().authenticated());
+				.requestMatchers(HttpMethod.POST, "/api/auth/register", "/api/auth/login").permitAll()
+				.anyRequest().authenticated())
+			// Instanciado aqui (e não como @Component) para rodar só dentro da cadeia do Spring Security.
+			.addFilterBefore(new JwtAuthenticationFilter(jwtService), UsernamePasswordAuthenticationFilter.class);
 		return http.build();
 	}
 

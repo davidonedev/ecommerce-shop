@@ -54,6 +54,20 @@ Não é preciso instalar Maven: use o wrapper (`./mvnw` / `mvnw.cmd`).
    npm run dev
    ```
 
+## Autenticação
+
+API stateless com JWT (`Authorization: Bearer <token>`). Defina `JWT_SECRET` (32+ bytes) no `.env`: sem ele a API
+não sobe.
+
+| Método | Rota | Acesso | Descrição |
+|---|---|---|---|
+| POST | `/api/auth/register` | público | Cria conta `CUSTOMER` e devolve o token |
+| POST | `/api/auth/login` | público | Devolve o token |
+| GET | `/api/auth/me` | autenticado | Dados do usuário logado |
+
+Contas `ADMIN` não são criadas pela API; promova um usuário direto no banco
+(`UPDATE users SET role = 'ADMIN' WHERE email = '...'`).
+
 ## Testes e qualidade
 
 ```bash
