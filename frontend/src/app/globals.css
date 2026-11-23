@@ -1,0 +1,362 @@
+@import 'tailwindcss';
+
+/*
+ * DESIGN SYSTEM, "Feito para você, com cuidado de ateliê".
+ * Fonte de verdade dos tokens: este arquivo (CSS) espelhado em src/lib/tokens/tokens.ts.
+ * Guia de uso: docs/design-tokens.md
+ */
+
+/* ------------------------------------------------------------------ */
+/* Tokens (static: sempre emitidos como variáveis CSS em :root)        */
+/* ------------------------------------------------------------------ */
+@theme static {
+  /* Cores (WCAG AA verificado, ver docs/design-tokens.md) */
+  --color-bg: #f7f3ee; /* Linho: fundo principal */
+  --color-surface: #fffdfa; /* Branco quente: cards, modais */
+  --color-sand: #e8dfd3; /* Areia: seções alternadas */
+  --color-ink: #1f1b16; /* Tinta: texto principal, botão primário */
+  --color-ink-muted: #6b6259; /* Texto secundário */
+  --color-accent: #b8562f; /* Terracota: CTAs de destaque */
+  --color-accent-hover: #9a4524;
+  --color-sage: #7f8f72; /* Sálvia: selos, sucesso (só preenchimento/ícone) */
+  --color-blush: #e9c9b8; /* Rosé: presentes, toques afetivos */
+  --color-border: #ddd3c6; /* Divisores decorativos (não serve de borda de campo) */
+  /* Cores de apoio: texto sobre preenchimentos e véu de modais */
+  --color-on-accent: #fffdfa;
+  --color-on-sage: #1f1b16;
+  --color-scrim: rgb(31 27 22 / 0.5);
+
+  /* Raios */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Sombras suaves e quentes */
+  --shadow-soft: 0 1px 2px rgb(31 27 22 / 0.06), 0 8px 24px rgb(31 27 22 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(31 27 22 / 0.06), 0 16px 40px rgb(31 27 22 / 0.12);
+
+  /* Tipografia fluida (clamp entre 360px e 1440px) */
+  --text-display-xl: clamp(3rem, 2.167rem + 3.704vw, 5.5rem); /* 48-88 */
+  --text-display-xl--line-height: 1;
+  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-xl--font-weight: 400;
+  --text-h1: clamp(2.5rem, 2.167rem + 1.481vw, 3.5rem); /* 40-56 */
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.015em;
+  --text-h1--font-weight: 400;
+  --text-h2: clamp(2rem, 1.75rem + 1.111vw, 2.75rem); /* 32-44 */
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h2--font-weight: 400;
+  --text-h3: clamp(1.375rem, 1.25rem + 0.556vw, 1.75rem); /* 22-28 */
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.005em;
+  --text-h3--font-weight: 600;
+  --text-body: clamp(1rem, 0.979rem + 0.093vw, 1.0625rem); /* 16-17 */
+  --text-body--line-height: 1.6;
+  --text-small: 0.875rem; /* 14 */
+  --text-small--line-height: 1.5;
+  --text-caption: 0.75rem; /* 12, maiúsculas via regra abaixo */
+  --text-caption--line-height: 1.4;
+  --text-caption--letter-spacing: 0.12em;
+  --text-caption--font-weight: 600;
+
+  /* Espaçamento: base 4px (o Tailwind já entrega 1=4, 2=8, 3=12, 4=16, 6=24, 8=32, 12=48, 16=64, 24=96, 32=128) */
+  --spacing: 0.25rem;
+  --spacing-section: clamp(4rem, 3rem + 5vw, 8rem); /* respiro vertical entre seções */
+  --gutter: 1.5rem; /* 24px */
+  --gutter-sm: 1rem; /* 16px no mobile */
+
+  /* Layout */
+  --container-page: 82.5rem; /* 1320px */
+  --drawer-width: 24rem;
+  --modal-width: 32rem;
+
+  /* Breakpoints: 360, 640, 768, 1024, 1280, 1440 */
+  --breakpoint-xs: 22.5rem;
+  --breakpoint-2xl: 90rem;
+
+  /* Movimento */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --grain-opacity: 0.035;
+
+  /* Animações (todas respeitam prefers-reduced-motion, ver abaixo) */
+  --animate-fade-up: fade-up var(--duration-slow) ease-out both;
+  --animate-fade-in: fade-in var(--duration-base) var(--ease-soft) both;
+  --animate-fade-out: fade-out var(--duration-fast) ease-in both;
+  --animate-pop-in: pop-in var(--duration-base) var(--ease-soft) both;
+  --animate-pop-out: pop-out var(--duration-fast) ease-in both;
+  --animate-slide-in-left: slide-in-left var(--duration-base) var(--ease-soft) both;
+  --animate-slide-out-left: slide-out-left var(--duration-fast) ease-in both;
+  --animate-slide-in-right: slide-in-right var(--duration-base) var(--ease-soft) both;
+  --animate-slide-out-right: slide-out-right var(--duration-fast) ease-in both;
+  --animate-slide-in-bottom: slide-in-bottom var(--duration-base) var(--ease-soft) both;
+  --animate-slide-out-bottom: slide-out-bottom var(--duration-fast) ease-in both;
+  --animate-accordion-down: accordion-down var(--duration-base) var(--ease-soft);
+  --animate-accordion-up: accordion-up var(--duration-base) var(--ease-soft);
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      translate: 0 16px;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      scale: 0.96;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+  @keyframes pop-out {
+    from {
+      opacity: 1;
+      scale: 1;
+    }
+    to {
+      opacity: 0;
+      scale: 0.96;
+    }
+  }
+  @keyframes slide-in-left {
+    from {
+      translate: -100% 0;
+    }
+    to {
+      translate: 0 0;
+    }
+  }
+  @keyframes slide-out-left {
+    from {
+      translate: 0 0;
+    }
+    to {
+      translate: -100% 0;
+    }
+  }
+  @keyframes slide-in-right {
+    from {
+      translate: 100% 0;
+    }
+    to {
+      translate: 0 0;
+    }
+  }
+  @keyframes slide-out-right {
+    from {
+      translate: 0 0;
+    }
+    to {
+      translate: 100% 0;
+    }
+  }
+  @keyframes slide-in-bottom {
+    from {
+      translate: 0 100%;
+    }
+    to {
+      translate: 0 0;
+    }
+  }
+  @keyframes slide-out-bottom {
+    from {
+      translate: 0 0;
+    }
+    to {
+      translate: 0 100%;
+    }
+  }
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes shimmer {
+    to {
+      translate: 100% 0;
+    }
+  }
+}
+
+/* Fontes: as variáveis (--font-fraunces etc.) vêm do next/font, aplicadas no <html> (src/app/fonts.ts). */
+@theme inline {
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-personalize-classic: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-personalize-elegant: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-personalize-script: var(--font-caveat), cursive;
+  --font-personalize-bold: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------------ */
+/* Modo escuro: PREPARADO, não ativado.                                */
+/* Para ativar: <html data-theme="dark">. Hoje nada define esse atributo. */
+/* ------------------------------------------------------------------ */
+[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: #171411;
+  --color-surface: #1f1b16;
+  --color-sand: #2a2520;
+  --color-ink: #f3ede6;
+  --color-ink-muted: #b3a89b;
+  --color-accent: #e08a62;
+  --color-accent-hover: #eba07c;
+  --color-sage: #9cad8f;
+  --color-blush: #3a2a22;
+  --color-border: #3a332b;
+  --color-on-accent: #1f1b16;
+  --color-on-sage: #1f1b16;
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.3);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.4), 0 16px 40px rgb(0 0 0 / 0.5);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Títulos em Fraunces; o tamanho vem das classes text-h1/h2/h3 (semântica ≠ visual). */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  /* Foco visível global, acessível (contraste ≥ 3:1 com os fundos do sistema) */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent) 25%, transparent);
+    color: var(--color-ink);
+  }
+}
+
+/* Legenda/overline: maiúsculas (tamanho, tracking e peso vêm do token text-caption) */
+@layer utilities {
+  .text-caption {
+    text-transform: uppercase;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilitários do design system                                        */
+/* ------------------------------------------------------------------ */
+
+/* Container: máx. 1320px, gutter 24px (16px no mobile) */
+@utility container-page {
+  width: 100%;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  padding-inline: var(--gutter-sm);
+
+  @media (width >= 40rem) {
+    padding-inline: var(--gutter);
+  }
+}
+
+/*
+ * Textura de grão: ruído sutil (3-4% de opacidade) para sensação tátil de tecido.
+ * Use em um wrapper; o conteúdo fica acima da textura.
+ */
+@utility bg-grain {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Movimento reduzido: sem deslocamentos, sem loops, transições mínimas */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Entradas aparecem já no estado final; shimmer desligado */
+  .animate-fade-up {
+    animation: none;
+    opacity: 1;
+    translate: none;
+  }
+
+  .animate-shimmer {
+    animation: none;
+  }
+}
