@@ -1,8 +1,8 @@
 name: CI
 
 on:
+  # PRs para qualquer branch (inclui PRs encadeados, que apontam para outra feature).
   pull_request:
-    branches: [develop, main]
   push:
     branches: [develop, main]
 
@@ -43,3 +43,17 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: npm run build
+
+  docker:
+    name: Docker (imagens da API e do site)
+    runs-on: ubuntu-latest
+    env:
+      # Valores só para o Compose conseguir interpolar o arquivo; nada disso vai para as imagens.
+      POSTGRES_PASSWORD: ci-only-password
+      JWT_SECRET: ci-only-secret-with-more-than-32-bytes
+    steps:
+      - uses: actions/checkout@v4
+      - name: Valida o docker-compose.yml
+        run: docker compose --profile full config --quiet
+      - name: Constrói as imagens
+        run: docker compose --profile full build
