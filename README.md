@@ -6,7 +6,7 @@ E-commerce completo com **React + TypeScript** no front-end e **Java 21 + Spring
 
 | Camada | Tecnologia |
 |---|---|
-| Front-end | React 19, TypeScript, Vite, Tailwind CSS, React Router, TanStack Query, Zustand, React Hook Form + Zod, Axios, Vitest |
+| Front-end | Next.js (App Router), React 19, TypeScript, Tailwind CSS 4, Radix UI, Framer Motion (motion), Lucide, TanStack Query, Zustand, React Hook Form + Zod, Axios, Vitest |
 | Back-end | Java 21, Spring Boot 4 (Web, Data JPA, Security, Validation, Actuator), Flyway, JWT (jjwt), Springdoc OpenAPI, Lombok |
 | Banco / cache | PostgreSQL 16, Redis 7 |
 | Infra | Docker / Docker Compose, GitHub Actions |
@@ -18,7 +18,7 @@ O back-end é um **monólito modular**: `catalog`, `user`, `cart`, `order`, `pay
 
 ```
 backend/     API Spring Boot (Maven)
-frontend/    SPA React + Vite
+frontend/    Site Next.js (App Router) + design system
 docker-compose.yml   Postgres e Redis para desenvolvimento
 .github/     CI e template de PR
 ```
@@ -47,12 +47,14 @@ Não é preciso instalar Maven: use o wrapper (`./mvnw` / `mvnw.cmd`).
    ```
    - Health: http://localhost:8080/actuator/health
    - Swagger (perfil `dev`): http://localhost:8080/swagger-ui.html
-3. Front-end (porta 5173, com proxy de `/api` para o back-end):
+3. Front-end (porta 3000, com proxy de `/api` para o back-end; use `API_PROXY_TARGET` para mudar o destino):
    ```bash
    cd frontend
    npm install
    npm run dev
    ```
+   - Design system (tokens e componentes): http://localhost:3000/design-system
+   - Para trocar o nome da marca, contatos e imagens: `frontend/src/lib/brand.ts` e `frontend/src/data/mock/`.
 
 ## Autenticação
 
