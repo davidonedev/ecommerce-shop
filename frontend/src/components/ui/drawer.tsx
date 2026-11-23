@@ -38,7 +38,7 @@ export function DrawerContent({
         {...(description ? {} : { 'aria-describedby': undefined })}
       >
         <div className="flex items-center justify-between gap-4 border-b border-border px-6 py-3">
-          <DialogPrimitive.Title className={hideTitle ? 'sr-only' : 'text-h3 font-display'}>
+          <DialogPrimitive.Title className={hideTitle ? 'sr-only' : 'text-section-title text-navy'}>
             {title}
           </DialogPrimitive.Title>
           <DialogPrimitive.Close asChild>
@@ -48,7 +48,7 @@ export function DrawerContent({
           </DialogPrimitive.Close>
         </div>
         {description ? (
-          <DialogPrimitive.Description className="px-6 pt-4 text-ink-muted">{description}</DialogPrimitive.Description>
+          <DialogPrimitive.Description className="px-6 pt-4 text-text-muted">{description}</DialogPrimitive.Description>
         ) : null}
         <div className={cx('flex-1 overflow-y-auto px-6 py-4')}>{children}</div>
       </DialogPrimitive.Content>

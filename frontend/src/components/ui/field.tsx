@@ -19,16 +19,16 @@ export function Field({ label, hint, error, className, children }: FieldProps) {
 
   return (
     <div className={cx('flex flex-col gap-1.5', className)}>
-      <label htmlFor={id} className="font-sans font-medium text-small text-ink">
+      <label htmlFor={id} className="text-small font-medium text-text">
         {label}
       </label>
       {cloneElement(children, { id, 'aria-describedby': describedBy, invalid: Boolean(error) || undefined })}
       {error ? (
-        <p id={`${id}-error`} role="alert" className="text-small text-accent-hover">
+        <p id={`${id}-error`} role="alert" className="text-small text-danger">
           {error}
         </p>
       ) : hint ? (
-        <p id={`${id}-hint`} className="text-small text-ink-muted">
+        <p id={`${id}-hint`} className="text-small text-text-muted">
           {hint}
         </p>
       ) : null}

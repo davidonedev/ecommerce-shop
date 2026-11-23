@@ -3,7 +3,7 @@ import { ContrastTable } from './ContrastTable'
 import { MotionDemo } from './MotionDemo'
 import { PersonalizeFontsDemo } from './PersonalizeFontsDemo'
 import { Section } from './Section'
-import { GrainDemo, RadiiDemo, ShadowsDemo, SpacingDemo } from './ShapeDemo'
+import { RadiiDemo, ShadowsDemo, SpacingDemo } from './ShapeDemo'
 import { TypeScaleDemo } from './TypeScaleDemo'
 
 const index = [
@@ -25,14 +25,14 @@ export function TokenShowcase() {
     <div>
       <nav
         aria-label="Seções dos tokens"
-        className="sticky top-0 z-10 -mx-4 border-b border-border bg-bg/90 px-4 backdrop-blur md:-mx-6 md:px-6"
+        className="sticky top-0 z-10 -mx-4 border-b border-border bg-bg/95 px-4 backdrop-blur md:-mx-6 md:px-6"
       >
-        <ul className="flex gap-2 overflow-x-auto py-3">
+        <ul className="flex gap-1 overflow-x-auto py-2">
           {index.map(([id, label]) => (
             <li key={id}>
               <a
                 href={`#${id}`}
-                className="inline-flex min-h-11 items-center rounded-full px-4 text-small text-ink hover:bg-sand"
+                className="text-nav inline-flex min-h-11 items-center rounded-control px-4 text-navy hover:bg-surface"
               >
                 {label}
               </a>
@@ -44,7 +44,7 @@ export function TokenShowcase() {
       <Section
         id="cores"
         title="Paleta"
-        description="Fundo Linho, tinta quente e um único acento terracota. A terracota entra com parcimônia: no máximo 1 CTA de destaque por dobra."
+        description="Azul-marinho para estrutura e ação, caramelo só como destaque e o resto neutro. Os derivados (caramelo escuro, borda de campo, texto sobre marinho, erro) existem só para passar no contraste."
       >
         <ColorSwatches />
       </Section>
@@ -52,7 +52,7 @@ export function TokenShowcase() {
       <Section
         id="contraste"
         title="Contraste (WCAG AA)"
-        description="Razões calculadas a partir dos próprios tokens. Texto precisa de pelo menos 4,5:1."
+        description="Razões calculadas a partir dos próprios tokens, com a decisão de uso de cada par. Texto precisa de 4,5:1; texto grande e elementos de interface, de 3:1."
       >
         <ContrastTable />
       </Section>
@@ -60,7 +60,7 @@ export function TokenShowcase() {
       <Section
         id="tipografia"
         title="Tipografia"
-        description="Fraunces nos títulos, com tamanho óptico alto nos maiores, e Inter no texto e na interface. A escala é fluida entre 360px e 1440px."
+        description="Poppins em títulos, menu, botões e preço (caixa alta e negrito), Inter no texto e Allura em uma única frase de destaque por seção."
       >
         <TypeScaleDemo />
       </Section>
@@ -68,27 +68,26 @@ export function TokenShowcase() {
       <Section
         id="personalizacao"
         title="Fontes e cores da personalização"
-        description="As 4 fontes e 5 cores do mini-personalizador e da prévia ao vivo."
+        description="O texto do cliente aparece em 4 fontes e 5 cores nas prévias. Elas não são fontes da interface e só carregam quando usadas."
       >
         <PersonalizeFontsDemo />
       </Section>
 
-      <Section id="espacamento" title="Espaçamento" description="Base de 4px: 4, 8, 12, 16, 24, 32, 48, 64, 96 e 128.">
+      <Section id="espacamento" title="Espaçamento" description="Base de 4px: 4, 8, 12, 16, 24, 32, 48, 64 e 80.">
         <SpacingDemo />
       </Section>
 
-      <Section id="formas" title="Raios, sombras e textura">
+      <Section id="formas" title="Raios e sombras">
         <div className="space-y-10">
           <RadiiDemo />
           <ShadowsDemo />
-          <GrainDemo />
         </div>
       </Section>
 
       <Section
         id="movimento"
         title="Movimento"
-        description="Pequeno e com propósito. Nada de parallax ou rolagem sequestrada."
+        description="Discreto e funcional. Sem autoplay, sem parallax, sem rolagem sequestrada."
       >
         <MotionDemo />
       </Section>

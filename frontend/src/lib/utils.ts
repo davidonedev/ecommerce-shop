@@ -8,7 +8,39 @@ import { extendTailwindMerge } from 'tailwind-merge'
 const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
-      'font-size': [{ text: ['display-xl', 'h1', 'h2', 'h3', 'body', 'small', 'caption'] }],
+      'font-size': [
+        {
+          text: [
+            // legados
+            'display-xl',
+            'h1',
+            'h2',
+            'h3',
+            'body',
+            'small',
+            'caption',
+            // estilos tipográficos do design system (globals.css)
+            'overline',
+            'display-hero',
+            'script',
+            'section-title',
+            'nav',
+            'button',
+            'button-sm',
+            'product-name',
+            'tile-name',
+            'price',
+            'badge',
+            'badge-xs',
+            'seal',
+            'topbar',
+            'cart-total',
+            'benefit-title',
+            'benefit-text',
+            'panel-title',
+          ],
+        },
+      ],
     },
   },
 })

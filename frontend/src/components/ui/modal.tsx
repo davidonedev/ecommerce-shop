@@ -33,11 +33,11 @@ export function ModalContent({ title, description, hideTitle, className, childre
         // Sem descrição, informa ao Radix que é intencional (evita aviso no console); com descrição, ele liga sozinho.
         {...(description ? {} : { 'aria-describedby': undefined })}
       >
-        <DialogPrimitive.Title className={hideTitle ? 'sr-only' : 'pr-12 text-h3 font-display'}>
+        <DialogPrimitive.Title className={hideTitle ? 'sr-only' : 'pr-12 text-section-title text-navy'}>
           {title}
         </DialogPrimitive.Title>
         {description ? (
-          <DialogPrimitive.Description className="mt-2 text-ink-muted">{description}</DialogPrimitive.Description>
+          <DialogPrimitive.Description className="mt-2 text-text-muted">{description}</DialogPrimitive.Description>
         ) : null}
         <div className="mt-4">{children}</div>
         <DialogPrimitive.Close asChild>

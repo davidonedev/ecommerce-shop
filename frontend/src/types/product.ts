@@ -18,8 +18,10 @@ export interface Product {
   name: string
   category: ProductCategory
   description: string
-  /** Preço "a partir de", em reais. */
+  /** Preço atual (ou "a partir de"), em reais. */
   price: number
+  /** Preço anterior, riscado ao lado do atual. Quando maior que `price`, o card mostra o selo "-N%". */
+  oldPrice?: number
   /** Número de parcelas sem juros exibido no card. */
   installments: number
   rating: number
