@@ -6,6 +6,7 @@ import axios from 'axios'
  * defina NEXT_PUBLIC_API_URL para apontar direto para outra URL (ex.: https://api.minhaloja.com/api).
  */
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL ?? '/api',
+  // `||` (e não `??`): variável definida porém vazia, como no .env.example, também cai em /api.
+  baseURL: process.env.NEXT_PUBLIC_API_URL || '/api',
   headers: { 'Content-Type': 'application/json' },
 })
