@@ -26,8 +26,10 @@ class CatalogIntegrationTests {
 	void listsCategoriesInDisplayOrder() throws Exception {
 		mockMvc.perform(get("/api/categories"))
 			.andExpect(status().isOk())
-			.andExpect(jsonPath("$[0].slug").value("tapetes-de-sala"))
-			.andExpect(jsonPath("$[7].slug").value("para-empresas"));
+			.andExpect(jsonPath("$.length()").value(3))
+			.andExpect(jsonPath("$[0].slug").value("chinelos-personalizados"))
+			.andExpect(jsonPath("$[1].slug").value("bolsas-personalizadas"))
+			.andExpect(jsonPath("$[2].slug").value("tapetes"));
 	}
 
 	@Test
@@ -36,15 +38,15 @@ class CatalogIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$.items.length()").value(3))
 			.andExpect(jsonPath("$.size").value(3))
-			.andExpect(jsonPath("$.totalItems").value(8));
+			.andExpect(jsonPath("$.totalItems").value(13));
 	}
 
 	@Test
 	void filtersByCategory() throws Exception {
-		mockMvc.perform(get("/api/products").param("category", "capachos"))
+		mockMvc.perform(get("/api/products").param("category", "chinelos-personalizados"))
 			.andExpect(status().isOk())
-			.andExpect(jsonPath("$.totalItems").value(1))
-			.andExpect(jsonPath("$.items[0].slug").value("capacho-bem-vindos-sobrenome"));
+			.andExpect(jsonPath("$.totalItems").value(4))
+			.andExpect(jsonPath("$.items[0].slug").value("chinelo-personalizado-nome"));
 	}
 
 	@Test
@@ -59,7 +61,7 @@ class CatalogIntegrationTests {
 	void sortsByPriceAscending() throws Exception {
 		mockMvc.perform(get("/api/products").param("sort", "price_asc").param("size", "1"))
 			.andExpect(status().isOk())
-			.andExpect(jsonPath("$.items[0].slug").value("necessaire-iniciais"));
+			.andExpect(jsonPath("$.items[0].slug").value("chinelo-personalizado-nome"));
 	}
 
 	@Test
@@ -72,7 +74,7 @@ class CatalogIntegrationTests {
 	void returnsProductDetailWithCategory() throws Exception {
 		mockMvc.perform(get("/api/products/tapete-sala-nome-da-familia"))
 			.andExpect(status().isOk())
-			.andExpect(jsonPath("$.categorySlug").value("tapetes-de-sala"))
+			.andExpect(jsonPath("$.categorySlug").value("tapetes"))
 			.andExpect(jsonPath("$.oldPrice").value(349.90))
 			.andExpect(jsonPath("$.inStock").value(true));
 	}
