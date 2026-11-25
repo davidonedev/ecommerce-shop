@@ -28,7 +28,8 @@ class PingEndpointTests {
 
 	@Test
 	void otherEndpointsRequireAuthentication() throws Exception {
-		mockMvc.perform(get("/api/products"))
+		// /api/products agora é público (vitrine); a área administrativa continua protegida.
+		mockMvc.perform(get("/api/admin/banners"))
 			.andExpect(status().isUnauthorized());
 	}
 

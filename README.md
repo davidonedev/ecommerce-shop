@@ -33,6 +33,26 @@ Não é preciso instalar Maven: use o wrapper (`./mvnw` / `mvnw.cmd`).
 
 ## Como rodar
 
+Há duas formas. Em ambas, comece copiando o `.env` (`cp .env.example .env`) e definindo `POSTGRES_PASSWORD`
+(use a mesma em `DB_PASSWORD`) e `JWT_SECRET`.
+
+### Opção A: tudo em containers (Postgres, Redis, API e site)
+
+```bash
+docker compose --profile full up -d --build
+```
+
+- Site: http://localhost:3000 · API: http://localhost:8080 · Health: http://localhost:8080/actuator/health
+- A API sobe só depois de o banco e o cache estarem saudáveis, e o site só depois da API.
+- Neste modo a API usa o perfil `prod` (Swagger desligado). O site fala com a API pelo nome do serviço
+  (`API_PROXY_TARGET=http://backend:8080`, gravado no build do front).
+- Para parar: `docker compose --profile full down` (acrescente `-v` para apagar também os dados do banco).
+- Portas ocupadas? Ajuste `BACKEND_PORT` / `FRONTEND_PORT` / `POSTGRES_PORT` / `REDIS_PORT` no `.env`.
+
+### Opção B: desenvolvimento (só banco e cache em containers)
+
+Mais prático para programar, pois recarrega sozinho a cada alteração.
+
 1. Configure o ambiente:
    ```bash
    cp .env.example .env     # ajuste senhas e JWT_SECRET
