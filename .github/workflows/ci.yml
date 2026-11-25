@@ -25,8 +25,10 @@ jobs:
         run: ./mvnw -B verify
 
   frontend:
-    name: Frontend (Vite)
+    name: Frontend (Next.js)
     runs-on: ubuntu-latest
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
     defaults:
       run:
         working-directory: frontend
