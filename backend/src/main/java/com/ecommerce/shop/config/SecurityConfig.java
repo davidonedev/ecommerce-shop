@@ -42,6 +42,11 @@ public class SecurityConfig {
 				.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
 				.requestMatchers(HttpMethod.GET, "/api/ping").permitAll()
 				.requestMatchers(HttpMethod.POST, "/api/auth/register", "/api/auth/login").permitAll()
+				// Vitrine pública: somente leitura de categorias, produtos, banners e imagens enviadas.
+				.requestMatchers(HttpMethod.GET, "/api/categories", "/api/categories/**", "/api/products",
+						"/api/products/**", "/api/banners", "/uploads/**")
+				.permitAll()
+				.requestMatchers("/api/admin/**").hasRole("ADMIN")
 				.anyRequest().authenticated())
 			// Instanciado aqui (e não como @Component) para rodar só dentro da cadeia do Spring Security.
 			.addFilterBefore(new JwtAuthenticationFilter(jwtService), UsernamePasswordAuthenticationFilter.class);
