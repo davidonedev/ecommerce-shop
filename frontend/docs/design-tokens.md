@@ -181,3 +181,33 @@ As páginas `/produtos`, `/carrinho`, `/checkout` e `/personalizar` ainda usam o
 3. Um único `<h1>` por página; o texto da marca vem de `lib/brand` (`[NOME DA LOJA]`), nunca digitado em componentes.
 4. Preços no formato `R$ 189,90` (`formatPrice`). Preço riscado sempre acompanhado de texto para leitores de tela.
 5. O texto do carrinho no header ("R$ 189,90") e o `CountBadge` são decorativos para leitores de tela: descreva a quantidade e o total no `aria-label` do link do carrinho.
+
+## Vitrine rosé + grafite (home, header e rodapé)
+
+A home e a estrutura do site (barra de aviso, header, rodapé, botão do WhatsApp) seguem uma identidade **rosé + grafite + creme**, medida nos prints de uma referência de e-commerce. As cores azul-marinho e caramelo acima continuam valendo para as demais páginas (produtos, carrinho, checkout, personalizar) até elas serem redesenhadas.
+
+| Classe                                   | Hex                    | Uso                                                                                   |
+| ---------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------- |
+| `bg-rose`                                | `#E6ACA4` Rosé         | Barra de aviso, faixa da newsletter, contador do carrinho, linhas decorativas. **Só fundo e decoração**: o texto sobre ele é grafite |
+| `bg-rose-strong` / `text-rose-strong`    | `#9C5953` Rosé escuro  | Botões, preços, "12x", script e textos pequenos em rosé (5,3:1 no branco)             |
+| `bg-rose-strong-hover`                   | `#864B46`              | Hover dos botões                                                                      |
+| `bg-rose-soft`                           | `#F7E4E0`              | Fundos suaves e hover do botão de contorno                                            |
+| `bg-cream`                               | `#FAF4F0` Creme        | Fundo do hero e dos banners de coleção                                                |
+| `bg-graphite`                            | `#3B3B3B` Grafite      | Header e rodapé                                                                       |
+| `text-on-graphite-muted`                 | `#D4D4D4`              | Links e textos secundários do rodapé                                                  |
+| `text-success`                           | `#1B7F2E`              | "Compra verificada" e botão do WhatsApp                                               |
+| `bg-soldout`                             | `#D10A0A`              | Selo "Esgotado" e botão play dos vídeos                                               |
+
+**Por que dois rosés:** o rosé da referência (`#E6ACA4`) com texto branco dá 1,9:1, abaixo do mínimo de 4,5:1. Ele fica em fundos e decoração; botões, preços e textos pequenos usam o rosé escuro.
+
+### Fontes e estilos da vitrine
+
+- **Montserrat** (`font-store-heading`): títulos de seção, preços, botões, menu.
+- **Raleway** (`font-store-body`): texto do banner, nome do produto, depoimentos.
+- **Cormorant Garamond** (`font-wordmark`): logotipo em caixa alta com espaçamento largo.
+- **Allura** (`text-script`): uma frase manuscrita por banner, em `text-rose-strong`.
+- Utilitários: `text-store-title`, `text-store-hero`, `text-store-eyebrow`, `text-store-product`, `text-store-price`, `text-store-price-note`, `text-store-button`, `text-store-nav`, `text-store-body`, `text-store-caption`, `text-store-label`, `text-store-badge`.
+
+### Componentes
+
+`ui/store-button.ts` (botão pílula), `ui/store-product-card.tsx` (card com preço no Pix, parcelamento, selos e "Esgotado"), `ui/quantity-stepper.tsx`, `ui/section-heading.tsx` (título com traço de 40×3px), `ui/store-carousel-controls.tsx`, `ui/ornaments.tsx` (moldura em arco e brilhos). Condições de pagamento (5% no Pix, 12x com juros) vêm de `brand.payment` em `src/lib/brand.ts` e são placeholders.

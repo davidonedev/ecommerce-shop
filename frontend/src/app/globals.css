@@ -32,6 +32,20 @@
   --color-danger: #b42318; /* Erros de formulário e aviso de erro */
   --color-scrim: rgb(15 27 51 / 0.55); /* Véu atrás de modais e drawers */
 
+  /*
+   * Vitrine rosé + grafite (home e estrutura do site). Medidas nos prints da referência;
+   * o rosé claro só vai em FUNDO e decoração. Para botão, preço e texto pequeno use `rose-strong` (AA).
+   */
+  --color-rose: #e6aca4; /* Rosé da referência: barra de aviso, newsletter, selos, linhas decorativas */
+  --color-rose-strong: #9c5953; /* Rosé escuro: botões, preços e textos (5,3:1 no branco) */
+  --color-rose-strong-hover: #864b46;
+  --color-rose-soft: #f7e4e0; /* Fundo suave */
+  --color-cream: #faf4f0; /* Fundo do hero e dos banners de coleção */
+  --color-graphite: #3b3b3b; /* Estrutura: header e rodapé */
+  --color-on-graphite-muted: #d4d4d4; /* Texto secundário sobre grafite */
+  --color-success: #1b7f2e; /* "Compra verificada" */
+  --color-soldout: #d10a0a; /* Selo "Esgotado" */
+
   /* Raios: botões/inputs 4, cards e painéis 8, selo círculo */
   --radius-control: 0.25rem; /* 4px */
   --radius-card: 0.5rem; /* 8px */
@@ -260,6 +274,10 @@
   --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif; /* legado = heading */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-script: var(--font-allura), cursive;
+  /* Vitrine rosé: Montserrat (títulos, preços, botões), Raleway (texto, banners) e serifa fina do wordmark */
+  --font-store-heading: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-store-body: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
+  --font-wordmark: var(--font-cormorant), ui-serif, Georgia, serif;
   /* Fontes só do texto do cliente (prévias e /personalizar); não são fontes da interface */
   --font-personalize-classic: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-personalize-elegant: var(--font-playfair), ui-serif, Georgia, serif;
@@ -506,6 +524,116 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ */
+/* Estilos da vitrine rosé (home, header e rodapé)                      */
+/* ------------------------------------------------------------------ */
+
+/* H2 de seção: 24px, Montserrat 700. Combine com <SectionHeading> (traço de 40×3px embaixo). */
+@utility text-store-title {
+  font-family: var(--font-store-heading);
+  font-size: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* Título do banner: 42px → 28px, Raleway leve, 2 linhas. */
+@utility text-store-hero {
+  font-family: var(--font-store-body);
+  font-size: clamp(1.75rem, 1.35rem + 1.8vw, 2.625rem);
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+/* Linha pequena acima do título do banner: 24px → 18px. */
+@utility text-store-eyebrow {
+  font-family: var(--font-store-body);
+  font-size: clamp(1.125rem, 1rem + 0.55vw, 1.5rem);
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* Nome do produto e texto de banner: 15px, Raleway. */
+@utility text-store-product {
+  font-family: var(--font-store-body);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Preço do card: 18px, Montserrat 700. */
+@utility text-store-price {
+  font-family: var(--font-store-heading);
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+/* Linhas de parcelamento do card: 12px, Montserrat. */
+@utility text-store-price-note {
+  font-family: var(--font-store-heading);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* Botões da vitrine: 14px, Montserrat 600. */
+@utility text-store-button {
+  font-family: var(--font-store-heading);
+  font-size: 0.875rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+/* Menu e rótulos do header: 14px, Montserrat 700. */
+@utility text-store-nav {
+  font-family: var(--font-store-heading);
+  font-size: 0.875rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+/* Texto corrido da vitrine (depoimentos, rodapé): 15px, Raleway. */
+@utility text-store-body {
+  font-family: var(--font-store-body);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+/* Apoio pequeno (benefícios, selos, avisos): 12px, Montserrat. */
+@utility text-store-caption {
+  font-family: var(--font-store-heading);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+/* Selo (LANÇAMENTO, Esgotado): 11px, Montserrat 700. */
+@utility text-store-badge {
+  font-family: var(--font-store-heading);
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Rótulo em negrito pequeno (nome de categoria, "Compra verificada"): 13px, Montserrat 700. */
+@utility text-store-label {
+  font-family: var(--font-store-heading);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+/* Foco visível sobre fundo grafite ou rosé escuro. */
+@utility focus-on-dark {
+  &:focus-visible {
+    outline: 2px solid var(--color-on-dark);
+    outline-offset: 2px;
+  }
 }
 
 /* ------------------------------------------------------------------ */

@@ -108,6 +108,57 @@ export const colors = [
     usage: 'Mensagem de erro, aviso de erro',
     derived: true,
   },
+  // Vitrine rosé + grafite (home, header e rodapé). Sem versão escura: o modo escuro não está ativo.
+  {
+    name: 'rose',
+    label: 'Rosé',
+    hex: '#E6ACA4',
+    darkHex: '#E6ACA4',
+    usage: 'Barra de aviso, newsletter, selos, linhas decorativas, contador do carrinho (só fundo; texto sobre ele é grafite)',
+  },
+  {
+    name: 'rose-strong',
+    label: 'Rosé escuro',
+    hex: '#9C5953',
+    darkHex: '#9C5953',
+    usage: 'Botões, preços, textos pequenos e script em rosé (passa no AA sobre branco e creme)',
+    derived: true,
+  },
+  {
+    name: 'rose-strong-hover',
+    label: 'Rosé escuro (hover)',
+    hex: '#864B46',
+    darkHex: '#864B46',
+    usage: 'Hover dos botões rosé escuro',
+    derived: true,
+  },
+  { name: 'rose-soft', label: 'Rosé suave', hex: '#F7E4E0', darkHex: '#F7E4E0', usage: 'Fundos suaves' },
+  { name: 'cream', label: 'Creme', hex: '#FAF4F0', darkHex: '#FAF4F0', usage: 'Fundo do hero e dos banners de coleção' },
+  { name: 'graphite', label: 'Grafite', hex: '#3B3B3B', darkHex: '#3B3B3B', usage: 'Header e rodapé' },
+  {
+    name: 'on-graphite-muted',
+    label: 'Sobre grafite (suave)',
+    hex: '#D4D4D4',
+    darkHex: '#D4D4D4',
+    usage: 'Texto secundário sobre grafite (links do rodapé)',
+    derived: true,
+  },
+  {
+    name: 'success',
+    label: 'Sucesso',
+    hex: '#1B7F2E',
+    darkHex: '#1B7F2E',
+    usage: '"Compra verificada"',
+    derived: true,
+  },
+  {
+    name: 'soldout',
+    label: 'Esgotado',
+    hex: '#D10A0A',
+    darkHex: '#D10A0A',
+    usage: 'Selo "Esgotado" (branco sobre ele passa no AA)',
+    derived: true,
+  },
 ] as const satisfies readonly ColorToken[]
 
 export type ColorName = (typeof colors)[number]['name']
@@ -139,7 +190,7 @@ export type TypeToken = {
   lineHeight: number
   letterSpacing: string
   fontWeight: number
-  family: 'Poppins' | 'Inter' | 'Allura'
+  family: 'Poppins' | 'Inter' | 'Allura' | 'Montserrat' | 'Raleway'
   uppercase: boolean
   sample: string
   usage: string
@@ -279,9 +330,73 @@ export const typeScale = [
     sample: '2.500+ avaliações',
     usage: 'Apoio dos benefícios, nº de avaliações',
   },
+  // Vitrine rosé (utilitários text-store-* em globals.css)
+  {
+    name: 'store-title',
+    label: 'Título de seção (vitrine)',
+    sizePx: [20, 24],
+    lineHeight: 1.25,
+    letterSpacing: '0',
+    fontWeight: 700,
+    family: 'Montserrat',
+    uppercase: false,
+    sample: 'Mais Vendidos',
+    usage: 'H2 de seção, com traço de 40×3px embaixo',
+  },
+  {
+    name: 'store-hero',
+    label: 'Título do banner (vitrine)',
+    sizePx: [28, 42],
+    lineHeight: 1.2,
+    letterSpacing: '0',
+    fontWeight: 400,
+    family: 'Raleway',
+    uppercase: false,
+    sample: 'Frete Grátis nas compras acima de R$ 299',
+    usage: 'Único h1 da home (2 linhas)',
+  },
+  {
+    name: 'store-product',
+    label: 'Nome do produto (vitrine)',
+    sizePx: [15, 15],
+    lineHeight: 1.4,
+    letterSpacing: '0',
+    fontWeight: 500,
+    family: 'Raleway',
+    uppercase: false,
+    sample: 'Tapete Personalizado com Nome',
+    usage: 'Cards da vitrine',
+  },
+  {
+    name: 'store-price',
+    label: 'Preço (vitrine)',
+    sizePx: [18, 18],
+    lineHeight: 1.3,
+    letterSpacing: '0',
+    fontWeight: 700,
+    family: 'Montserrat',
+    uppercase: false,
+    sample: 'R$ 189,90',
+    usage: 'Preço do card, em rosé escuro',
+  },
+  {
+    name: 'store-button',
+    label: 'Botão (vitrine)',
+    sizePx: [14, 14],
+    lineHeight: 1.25,
+    letterSpacing: '0',
+    fontWeight: 600,
+    family: 'Montserrat',
+    uppercase: false,
+    sample: 'Comprar',
+    usage: 'Botões pílula da vitrine',
+  },
 ] as const satisfies readonly TypeToken[]
 
 export const fonts = {
+  storeHeading: { label: 'Montserrat', cssVar: '--font-montserrat', usage: 'Vitrine: títulos, preços, botões (400-700)' },
+  storeBody: { label: 'Raleway', cssVar: '--font-raleway', usage: 'Vitrine: texto e banners (400, 500)' },
+  wordmark: { label: 'Cormorant Garamond', cssVar: '--font-cormorant', usage: 'Logotipo em caixa alta (400, 500)' },
   heading: { label: 'Poppins', cssVar: '--font-poppins', usage: 'Títulos, menu, botões, preço (600, 700, 800)' },
   sans: { label: 'Inter', cssVar: '--font-inter', usage: 'Texto (400, 500)' },
   script: { label: 'Allura', cssVar: '--font-allura', usage: 'Uma frase manuscrita por seção de destaque' },

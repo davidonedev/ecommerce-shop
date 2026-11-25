@@ -1,4 +1,15 @@
-import { Allura, Archivo_Black, Caveat, Fraunces, Inter, Playfair_Display, Poppins } from 'next/font/google'
+import {
+  Allura,
+  Archivo_Black,
+  Caveat,
+  Cormorant_Garamond,
+  Fraunces,
+  Inter,
+  Montserrat,
+  Playfair_Display,
+  Poppins,
+  Raleway,
+} from 'next/font/google'
 
 /**
  * Fontes do design system (next/font, display: swap).
@@ -8,6 +19,9 @@ import { Allura, Archivo_Black, Caveat, Fraunces, Inter, Playfair_Display, Poppi
  *   font-heading / font-display -> Poppins 600, 700, 800 (títulos, menu, botões, preço)
  *   font-sans                   -> Inter 400, 500 (texto)
  *   font-script                 -> Allura (UMA frase manuscrita por seção de destaque)
+ *   font-store-heading          -> Montserrat 400-700 (vitrine rosé: títulos, preços, botões)
+ *   font-store-body             -> Raleway 400, 500 (vitrine rosé: texto e banners)
+ *   font-wordmark               -> Cormorant Garamond 400, 500 (logotipo)
  *
  * Só para o texto do cliente nas prévias e em /personalizar (sem preload, carregam quando usadas):
  *   font-personalize-classic -> Fraunces
@@ -35,6 +49,30 @@ const allura = Allura({
   weight: '400',
   display: 'swap',
   variable: '--font-allura',
+})
+
+/** Vitrine rosé: títulos, preços e botões (font-store-heading). */
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-montserrat',
+})
+
+/** Vitrine rosé: texto, nome de produto e banners (font-store-body). */
+const raleway = Raleway({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-raleway',
+})
+
+/** Wordmark da loja: serifa fina em caixa alta (font-wordmark). */
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-cormorant',
 })
 
 /** Variável com o eixo opsz (tamanho óptico). Só renderiza o texto do cliente. */
@@ -77,6 +115,9 @@ export const fontClassNames = [
   poppins.variable,
   inter.variable,
   allura.variable,
+  montserrat.variable,
+  raleway.variable,
+  cormorant.variable,
   fraunces.variable,
   playfair.variable,
   caveat.variable,

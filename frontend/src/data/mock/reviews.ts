@@ -40,6 +40,24 @@ export const reviews: Review[] = [
     text: 'O cachorro adotou o tapete no mesmo dia. Lava fácil e a cor não desbotou.',
     avatar: photo('mulher3', 'Retrato de Juliana', 160),
   },
+  {
+    id: 5,
+    author: 'Patrícia Moraes',
+    city: 'Salvador, BA',
+    product: 'Bolsa tote com monograma',
+    rating: 5,
+    text: 'A bolsa é linda e o monograma ficou exatamente como na prévia. Uso todos os dias e já recebi vários elogios.',
+    avatar: photo('mulher1', 'Retrato de Patrícia', 160),
+  },
+  {
+    id: 6,
+    author: 'Thiago Almeida',
+    city: 'Goiânia, GO',
+    product: 'Necessaire com iniciais',
+    rating: 5,
+    text: 'Comprei de presente e a entrega chegou antes do prazo. Acabamento caprichado e atendimento rápido no WhatsApp.',
+    avatar: photo('homem2', 'Retrato de Thiago', 160),
+  },
 ]
 
 export const ugcPhotos: UgcPhoto[] = [

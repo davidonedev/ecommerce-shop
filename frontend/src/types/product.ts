@@ -1,4 +1,4 @@
-export type ProductCategory = 'tapetes' | 'bolsas' | 'presentes'
+export type ProductCategory = 'chinelos' | 'bolsas' | 'tapetes' | 'presentes'
 
 export type ProductBadge = 'customizable' | 'bestseller' | 'new' | 'ready'
 
@@ -28,6 +28,10 @@ export interface Product {
   reviewCount: number
   badges: ProductBadge[]
   personalizable: boolean
+  /** Sem estoque: a vitrine mostra o selo "Esgotado" e o link "Avise-me quando chegar". */
+  soldOut?: boolean
+  /** Produto em destaque (mais vendido): a vitrine mostra o selo "DESTAQUE". */
+  bestSeller?: boolean
   /** [principal, em ambiente (aparece no hover)] */
   images: [ProductImage, ProductImage]
   swatches: Swatch[]

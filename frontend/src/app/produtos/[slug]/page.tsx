@@ -1,79 +1,94 @@
-import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { AddToCartButton } from '@/components/add-to-cart-button'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Suspense } from 'react'
+import { ProductPurchase } from '@/components/catalog/product-purchase'
+import { Breadcrumb, type BreadcrumbItem } from '@/components/ui/breadcrumb'
 import { Rating } from '@/components/ui/rating'
-import { getProductBySlug, products } from '@/data/mock/products'
-import { formatPrice, installmentAmount } from '@/lib/utils'
+import { Skeleton } from '@/components/ui/skeleton'
+import { categoryHref } from '@/data/categories'
+import { brand } from '@/lib/brand'
+import { getProduct, toProduct } from '@/lib/catalog-api'
+import { installmentWithInterest, pixPrice } from '@/lib/pricing'
+import { formatPrice } from '@/lib/utils'
 
-export function generateStaticParams() {
-  return products.map((product) => ({ slug: product.slug }))
+/** Página de um produto, lido da API pelo slug. Slug que não existe abre a página 404. */
+export default function ProductDetailPage({ params }: PageProps<'/produtos/[slug]'>) {
+  return (
+    <Suspense fallback={<Skeleton className="container-page my-10 h-96" />}>
+      <ProductDetailContent params={params} />
+    </Suspense>
+  )
 }
 
-export async function generateMetadata({ params }: PageProps<'/produtos/[slug]'>): Promise<Metadata> {
+async function ProductDetailContent({ params }: Pick<PageProps<'/produtos/[slug]'>, 'params'>) {
   const { slug } = await params
-  const product = getProductBySlug(slug)
-  return product ? { title: product.name, description: product.description } : {}
-}
+  const api = await getProduct(slug)
+  if (!api) notFound()
 
-export default async function ProductDetailPage({ params }: PageProps<'/produtos/[slug]'>) {
-  const { slug } = await params
-  const product = getProductBySlug(slug)
-  if (!product) notFound()
-
+  const product = toProduct(api)
   const [main, ambient] = product.images
+  const crumbs: BreadcrumbItem[] = [{ label: 'Início', href: '/' }]
+  if (api.categoryName && api.categorySlug) crumbs.push({ label: api.categoryName, href: categoryHref(api.categorySlug) })
+  crumbs.push({ label: product.name })
 
   return (
-    <section className="container-page grid gap-8 py-10 md:grid-cols-2 md:gap-12 md:py-14">
-      <div className="grid gap-4">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-sand">
-          <Image
-            src={main.src}
-            alt={main.alt}
-            fill
-            priority
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover"
-          />
-        </div>
-        <div className="relative aspect-[16/10] overflow-hidden rounded-md bg-sand">
-          <Image
-            src={ambient.src}
-            alt={ambient.alt}
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover"
-          />
-        </div>
-      </div>
+    <section className="container-page py-8 md:py-12">
+      <title>{`${product.name} | ${brand.name}`}</title>
+      <Breadcrumb items={crumbs} />
 
-      <div className="flex flex-col gap-5 md:py-4">
-        <div className="flex flex-wrap gap-2">
-          {product.badges.map((tone) => (
-            <Badge key={tone} tone={tone} />
-          ))}
+      <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-12">
+        <div className="grid gap-4">
+          <div className="relative aspect-3/4 overflow-hidden bg-surface">
+            <Image
+              src={main.src}
+              alt={main.alt}
+              fill
+              unoptimized
+              priority
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          {ambient.src !== main.src && (
+            <div className="relative aspect-16/10 overflow-hidden bg-surface">
+              <Image
+                src={ambient.src}
+                alt={ambient.alt}
+                fill
+                unoptimized
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          )}
         </div>
-        <h1 className="text-h1">{product.name}</h1>
-        <Rating value={product.rating} count={product.reviewCount} />
-        <p className="text-body text-ink-muted">{product.description}</p>
-        <div>
-          <p className="text-h3 font-display">
-            <span className="text-small font-sans font-normal text-ink-muted">a partir de </span>
-            {formatPrice(product.price)}
-          </p>
-          <p className="text-small text-ink-muted">
-            ou {product.installments}x de {formatPrice(installmentAmount(product.price, product.installments))} sem
-            juros
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-3">
-          <Button asChild variant="accent" size="lg">
-            <Link href={`/personalizar?produto=${product.slug}`}>Personalizar</Link>
-          </Button>
-          <AddToCartButton product={product} />
+
+        <div className="flex flex-col gap-5 md:py-4">
+          <h1 className="text-store-hero text-text">{product.name}</h1>
+          <Rating value={product.rating} count={product.reviewCount} showValue />
+          {product.description && <p className="text-store-body text-text-muted">{product.description}</p>}
+
+          <div className="flex flex-col gap-1">
+            <p className="flex items-baseline gap-3">
+              <span className="sr-only">Preço: </span>
+              <span className="text-store-title text-rose-strong">{formatPrice(product.price)}</span>
+              {product.oldPrice !== undefined && product.oldPrice > product.price && (
+                <>
+                  <span className="sr-only">Preço anterior: </span>
+                  <s className="text-store-body text-text-muted">{formatPrice(product.oldPrice)}</s>
+                </>
+              )}
+            </p>
+            <p className="text-store-body text-text">
+              <strong className="font-bold">{formatPrice(pixPrice(product.price))}</strong> à vista no Pix
+            </p>
+            <p className="text-store-body text-text">
+              ou <span className="text-rose-strong">{brand.payment.maxInstallments}x</span> de{' '}
+              <span className="text-rose-strong">{formatPrice(installmentWithInterest(product.price))}</span> com juros
+            </p>
+          </div>
+
+          <ProductPurchase product={product} />
         </div>
       </div>
     </section>

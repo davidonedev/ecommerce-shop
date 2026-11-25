@@ -13,6 +13,11 @@ const sampleClass: Record<(typeof typeScale)[number]['name'], string> = {
   'product-name': 'text-product-name text-text',
   price: 'text-price text-text',
   caption: 'text-caption text-text-muted',
+  'store-title': 'text-store-title text-text',
+  'store-hero': 'text-store-hero text-text',
+  'store-product': 'text-store-product text-text',
+  'store-price': 'text-store-price text-rose-strong',
+  'store-button': 'text-store-button text-text',
 }
 
 /** Escala tipográfica do briefing: Poppins (títulos/UI), Inter (texto) e Allura (uma frase de destaque). */
