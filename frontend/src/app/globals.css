@@ -1,75 +1,92 @@
 @import 'tailwindcss';
 
 /*
- * DESIGN SYSTEM, "Feito para você, com cuidado de ateliê".
- * Fonte de verdade dos tokens: este arquivo (CSS) espelhado em src/lib/tokens/tokens.ts.
- * Guia de uso: docs/design-tokens.md
+ * DESIGN SYSTEM, rosé + grafite.
+ * Fonte de verdade dos tokens: este arquivo (CSS), espelhado em src/lib/tokens/tokens.ts
+ * (um teste confere que os dois não se afastam). Guia de uso: docs/design-tokens.md
  */
 
 /* ------------------------------------------------------------------ */
 /* Tokens (static: sempre emitidos como variáveis CSS em :root)        */
 /* ------------------------------------------------------------------ */
 @theme static {
-  /* Cores (WCAG AA verificado, ver docs/design-tokens.md) */
-  --color-bg: #f7f3ee; /* Linho: fundo principal */
-  --color-surface: #fffdfa; /* Branco quente: cards, modais */
-  --color-sand: #e8dfd3; /* Areia: seções alternadas */
-  --color-ink: #1f1b16; /* Tinta: texto principal, botão primário */
-  --color-ink-muted: #6b6259; /* Texto secundário */
-  --color-accent: #b8562f; /* Terracota: CTAs de destaque */
-  --color-accent-hover: #9a4524;
-  --color-sage: #7f8f72; /* Sálvia: selos, sucesso (só preenchimento/ícone) */
-  --color-blush: #e9c9b8; /* Rosé: presentes, toques afetivos */
-  --color-border: #ddd3c6; /* Divisores decorativos (não serve de borda de campo) */
-  /* Cores de apoio: texto sobre preenchimentos e véu de modais */
-  --color-on-accent: #fffdfa;
-  --color-on-sage: #1f1b16;
-  --color-scrim: rgb(31 27 22 / 0.5);
+  /* Base neutra (a paleta rosé e grafite fica mais abaixo) */
+  --color-sand: #f5ebe6; /* Areia */
+  --color-bg: #ffffff;
+  --color-surface: #f4f4f5;
+  --color-text: #111827;
+  --color-text-muted: #5b6170;
+  --color-text-subtle: #9ca3af; /* NÃO é cor de texto de leitura: só preço riscado e legenda decorativa */
+  --color-star: #f5a623;
+  --color-border: #e5e7eb; /* Divisor decorativo (não serve de borda de campo) */
+  --color-on-dark: #ffffff;
 
-  /* Raios */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 24px;
+  /* Derivados (criados para passar no contraste WCAG AA; ver docs/design-tokens.md) */
+  --color-field-border: #80868f; /* Borda de campo e de controles (3,67:1, exigência de 3:1) */
+  --color-danger: #b42318; /* Erros de formulário e aviso de erro */
+  --color-scrim: rgb(33 33 33 / 0.55); /* Véu atrás de modais e drawers */
+
+  /*
+   * Vitrine rosé + grafite (home e estrutura do site). Medidas nos prints da referência;
+   * o rosé claro só vai em FUNDO e decoração. Para botão, preço e texto pequeno use `rose-strong` (AA).
+   */
+  --color-rose: #e6aca4; /* Rosé da referência: barra de aviso, newsletter, selos, linhas decorativas */
+  --color-rose-strong: #9c5953; /* Rosé escuro: botões, preços e textos (5,3:1 no branco) */
+  --color-rose-strong-hover: #864b46;
+  --color-rose-soft: #f7e4e0; /* Fundo suave */
+  --color-cream: #faf4f0; /* Fundo do hero e dos banners de coleção */
+  --color-graphite: #3b3b3b; /* Estrutura e ação: header, rodapé, botão primário */
+  --color-graphite-hover: #2b2b2b; /* Hover dos botões grafite */
+  --color-on-graphite-muted: #d4d4d4; /* Texto secundário sobre grafite */
+  --color-success: #1b7f2e; /* "Compra verificada" */
+  --color-soldout: #d10a0a; /* Selo "Esgotado" */
+
+  /* Raios: botões/inputs 4, cards e painéis 8, selo círculo */
+  --radius-control: 0.25rem; /* 4px */
+  --radius-card: 0.5rem; /* 8px */
+  --radius-panel: 0.5rem; /* 8px */
   --radius-full: 9999px;
+  /* Legado (outras páginas): mapeados para os valores novos */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.5rem;
 
-  /* Sombras suaves e quentes */
-  --shadow-soft: 0 1px 2px rgb(31 27 22 / 0.06), 0 8px 24px rgb(31 27 22 / 0.06);
-  --shadow-lift: 0 2px 4px rgb(31 27 22 / 0.06), 0 16px 40px rgb(31 27 22 / 0.12);
+  /* Sombras: mínimas. A separação é feita por fundo e borda fina. */
+  --shadow-soft: 0 1px 2px rgb(33 33 33 / 0.05);
+  --shadow-hover: 0 6px 20px rgb(33 33 33 / 0.08);
+  --shadow-lift: 0 10px 32px rgb(33 33 33 / 0.18); /* Só sobreposições: modal, drawer, toast */
 
-  /* Tipografia fluida (clamp entre 360px e 1440px) */
-  --text-display-xl: clamp(3rem, 2.167rem + 3.704vw, 5.5rem); /* 48-88 */
-  --text-display-xl--line-height: 1;
-  --text-display-xl--letter-spacing: -0.02em;
-  --text-display-xl--font-weight: 400;
-  --text-h1: clamp(2.5rem, 2.167rem + 1.481vw, 3.5rem); /* 40-56 */
-  --text-h1--line-height: 1.1;
-  --text-h1--letter-spacing: -0.015em;
-  --text-h1--font-weight: 400;
-  --text-h2: clamp(2rem, 1.75rem + 1.111vw, 2.75rem); /* 32-44 */
-  --text-h2--line-height: 1.15;
+  /* Tipografia legada (outras páginas e vitrine). Os estilos novos são @utility mais abaixo. */
+  --text-display-xl: clamp(2.125rem, 1.667rem + 2.037vw, 3.5rem);
+  --text-display-xl--line-height: 1.05;
+  --text-display-xl--letter-spacing: -0.01em;
+  --text-display-xl--font-weight: 800;
+  --text-h1: clamp(1.75rem, 1.5rem + 1.111vw, 2.5rem); /* 28-40 */
+  --text-h1--line-height: 1.15;
+  --text-h1--letter-spacing: -0.01em;
+  --text-h1--font-weight: 700;
+  --text-h2: clamp(1.375rem, 1.25rem + 0.556vw, 1.75rem); /* 22-28 */
+  --text-h2--line-height: 1.2;
   --text-h2--letter-spacing: -0.01em;
-  --text-h2--font-weight: 400;
-  --text-h3: clamp(1.375rem, 1.25rem + 0.556vw, 1.75rem); /* 22-28 */
-  --text-h3--line-height: 1.25;
+  --text-h2--font-weight: 700;
+  --text-h3: clamp(1.125rem, 1.083rem + 0.185vw, 1.25rem); /* 18-20 */
+  --text-h3--line-height: 1.3;
   --text-h3--letter-spacing: -0.005em;
-  --text-h3--font-weight: 600;
-  --text-body: clamp(1rem, 0.979rem + 0.093vw, 1.0625rem); /* 16-17 */
+  --text-h3--font-weight: 700;
+  --text-body: clamp(0.9375rem, 0.9167rem + 0.0926vw, 1rem); /* 15-16 */
   --text-body--line-height: 1.6;
   --text-small: 0.875rem; /* 14 */
   --text-small--line-height: 1.5;
-  --text-caption: 0.75rem; /* 12, maiúsculas via regra abaixo */
+  --text-caption: 0.75rem; /* 12 */
   --text-caption--line-height: 1.4;
-  --text-caption--letter-spacing: 0.12em;
-  --text-caption--font-weight: 600;
 
-  /* Espaçamento: base 4px (o Tailwind já entrega 1=4, 2=8, 3=12, 4=16, 6=24, 8=32, 12=48, 16=64, 24=96, 32=128) */
+  /* Espaçamento: base 4px (1=4, 2=8, 3=12, 4=16, 6=24, 8=32, 12=48, 16=64, 20=80) */
   --spacing: 0.25rem;
-  --spacing-section: clamp(4rem, 3rem + 5vw, 8rem); /* respiro vertical entre seções */
   --gutter: 1.5rem; /* 24px */
   --gutter-sm: 1rem; /* 16px no mobile */
 
   /* Layout */
-  --container-page: 82.5rem; /* 1320px */
+  --container-page: 80rem; /* 1280px */
   --drawer-width: 24rem;
   --modal-width: 32rem;
 
@@ -79,10 +96,10 @@
 
   /* Movimento */
   --duration-fast: 150ms;
+  --duration-button: 200ms;
   --duration-base: 250ms;
   --duration-slow: 400ms;
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
-  --grain-opacity: 0.035;
 
   /* Animações (todas respeitam prefers-reduced-motion, ver abaixo) */
   --animate-fade-up: fade-up var(--duration-slow) ease-out both;
@@ -99,6 +116,7 @@
   --animate-accordion-down: accordion-down var(--duration-base) var(--ease-soft);
   --animate-accordion-up: accordion-up var(--duration-base) var(--ease-soft);
   --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+  --animate-cart-bump: cart-bump 300ms var(--ease-soft);
 
   @keyframes fade-up {
     from {
@@ -215,38 +233,51 @@
       translate: 100% 0;
     }
   }
+  /* Contador do carrinho "pula" ao adicionar um item */
+  @keyframes cart-bump {
+    0% {
+      scale: 1;
+    }
+    40% {
+      scale: 1.3;
+    }
+    100% {
+      scale: 1;
+    }
+  }
 }
 
-/* Fontes: as variáveis (--font-fraunces etc.) vêm do next/font, aplicadas no <html> (src/app/fonts.ts). */
+/*
+ * Apelidos LEGADOS: mantêm as outras páginas (produtos, carrinho, checkout, personalizar) corretas
+ * na paleta nova sem editar o código delas. Remover quando essas páginas forem redesenhadas.
+ * (`surface` e `sand` mantêm o nome, mas já têm os valores novos.)
+ */
 @theme inline {
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --color-ink: var(--color-text);
+  --color-ink-muted: var(--color-text-muted);
+  --color-accent: var(--color-graphite);
+  --color-accent-hover: var(--color-graphite-hover);
+  --color-on-accent: var(--color-on-dark);
+  --color-blush: var(--color-sand);
+  --color-sage: var(--color-rose);
+  --color-on-sage: var(--color-graphite);
+}
+
+/* Fontes: as variáveis (--font-poppins etc.) vêm do next/font, aplicadas no <html> (src/app/fonts.ts). */
+@theme inline {
+  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif; /* legado = heading */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-allura), cursive;
+  /* Vitrine rosé: Montserrat (títulos, preços, botões), Raleway (texto, banners) e serifa fina do wordmark */
+  --font-store-heading: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-store-body: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
+  --font-wordmark: var(--font-cormorant), ui-serif, Georgia, serif;
+  /* Fontes só do texto do cliente (prévias e /personalizar); não são fontes da interface */
   --font-personalize-classic: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-personalize-elegant: var(--font-playfair), ui-serif, Georgia, serif;
   --font-personalize-script: var(--font-caveat), cursive;
   --font-personalize-bold: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-}
-
-/* ------------------------------------------------------------------ */
-/* Modo escuro: PREPARADO, não ativado.                                */
-/* Para ativar: <html data-theme="dark">. Hoje nada define esse atributo. */
-/* ------------------------------------------------------------------ */
-[data-theme='dark'] {
-  color-scheme: dark;
-  --color-bg: #171411;
-  --color-surface: #1f1b16;
-  --color-sand: #2a2520;
-  --color-ink: #f3ede6;
-  --color-ink-muted: #b3a89b;
-  --color-accent: #e08a62;
-  --color-accent-hover: #eba07c;
-  --color-sage: #9cad8f;
-  --color-blush: #3a2a22;
-  --color-border: #3a332b;
-  --color-on-accent: #1f1b16;
-  --color-on-sage: #1f1b16;
-  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.3);
-  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.4), 0 16px 40px rgb(0 0 0 / 0.5);
 }
 
 /* ------------------------------------------------------------------ */
@@ -260,7 +291,7 @@
 
   body {
     background: var(--color-bg);
-    color: var(--color-ink);
+    color: var(--color-text);
     font-family: var(--font-sans);
     font-size: var(--text-body);
     line-height: var(--text-body--line-height);
@@ -269,39 +300,312 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Títulos em Fraunces; o tamanho vem das classes text-h1/h2/h3 (semântica ≠ visual). */
+  /* Títulos em Poppins 700. A caixa alta vem dos estilos de título (text-display-hero, text-section-title...),
+     para que títulos de produto e de outras páginas continuem em caixa normal. */
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.01em;
     text-wrap: balance;
   }
 
-  /* Foco visível global, acessível (contraste ≥ 3:1 com os fundos do sistema) */
+  /* Foco visível global: anel grafite de 2px (17:1 sobre branco). Sobre fundo grafite use `focus-inverse`. */
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-graphite);
     outline-offset: 2px;
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-accent) 25%, transparent);
-    color: var(--color-ink);
-  }
-}
-
-/* Legenda/overline: maiúsculas (tamanho, tracking e peso vêm do token text-caption) */
-@layer utilities {
-  .text-caption {
-    text-transform: uppercase;
+    background: var(--color-rose-soft);
+    color: var(--color-graphite);
   }
 }
 
 /* ------------------------------------------------------------------ */
-/* Utilitários do design system                                        */
+/* Estilos tipográficos (família + tamanho + peso + caixa)             */
+/* Tailwind: text-<nome>. Todos fluidos entre 360px e 1440px.          */
 /* ------------------------------------------------------------------ */
 
-/* Container: máx. 1320px, gutter 24px (16px no mobile) */
+/* "BEM-VINDO À [NOME DA LOJA]": 13px, caixa alta. Cor: text-rose-strong (texto pequeno sobre claro). */
+@utility text-overline {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Título do hero: 56px → 34px, Poppins 800, caixa alta. */
+@utility text-display-hero {
+  font-family: var(--font-heading);
+  font-size: clamp(2.125rem, 1.667rem + 2.037vw, 3.5rem);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+/* Frase manuscrita (Allura): 36px → 26px. Texto GRANDE: rosé (3,12:1) só sobre fundo branco; sobre areia use rose-strong. */
+@utility text-script {
+  font-family: var(--font-script);
+  font-size: clamp(1.625rem, 1.417rem + 0.926vw, 2.25rem);
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+/* "COMPRE POR CATEGORIA", "MAIS VENDIDOS": 20px → 18px, caixa alta. */
+@utility text-section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 1.083rem + 0.185vw, 1.25rem);
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Menu: 13px, caixa alta. */
+@utility text-nav {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Botões: 13px, caixa alta. */
+@utility text-button {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Botão do card e link de seção: 12px, caixa alta. */
+@utility text-button-sm {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Nome do produto: 14px / 500. */
+@utility text-product-name {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Nome do tile de categoria: 13px / 500. */
+@utility text-tile-name {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* Preço atual: 17px / 700. */
+@utility text-price {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+/* Etiquetas: "-20%" (11px/700) e "PERSONALIZÁVEL" (10px, caixa alta). */
+@utility text-badge {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+@utility text-badge-xs {
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Valor grande do selo de desconto ("50%"): 32px no desktop, 24px no celular. */
+@utility text-seal {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 1.333rem + 0.741vw, 2rem);
+  line-height: 1;
+  font-weight: 800;
+}
+
+/* Barra superior: texto GRANDE e pesado, caixa alta. 20px no desktop, 12px no celular. */
+@utility text-topbar {
+  font-family: var(--font-heading);
+  font-size: clamp(0.75rem, 0.583rem + 0.741vw, 1.25rem);
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* Valor total do carrinho ao lado do ícone: "R$ 189,90". */
+@utility text-cart-total {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+/* Linha de benefícios do hero: título 11px caixa alta 600 + apoio 11px. */
+@utility text-benefit-title {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@utility text-benefit-text {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+/* Título dos painéis da faixa promocional: "FRETE GRÁTIS". */
+@utility text-panel-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ */
+/* Estilos da vitrine rosé (home, header e rodapé)                      */
+/* ------------------------------------------------------------------ */
+
+/* H2 de seção: 24px, Montserrat 700. Combine com <SectionHeading> (traço de 40×3px embaixo). */
+@utility text-store-title {
+  font-family: var(--font-store-heading);
+  font-size: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* Título do banner: 42px → 28px, Raleway leve, 2 linhas. */
+@utility text-store-hero {
+  font-family: var(--font-store-body);
+  font-size: clamp(1.75rem, 1.35rem + 1.8vw, 2.625rem);
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+/* Linha pequena acima do título do banner: 24px → 18px. */
+@utility text-store-eyebrow {
+  font-family: var(--font-store-body);
+  font-size: clamp(1.125rem, 1rem + 0.55vw, 1.5rem);
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* Nome do produto e texto de banner: 15px, Raleway. */
+@utility text-store-product {
+  font-family: var(--font-store-body);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Preço do card: 18px, Montserrat 700. */
+@utility text-store-price {
+  font-family: var(--font-store-heading);
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+/* Linhas de parcelamento do card: 12px, Montserrat. */
+@utility text-store-price-note {
+  font-family: var(--font-store-heading);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* Botões da vitrine: 14px, Montserrat 600. */
+@utility text-store-button {
+  font-family: var(--font-store-heading);
+  font-size: 0.875rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+/* Menu e rótulos do header: 14px, Montserrat 700. */
+@utility text-store-nav {
+  font-family: var(--font-store-heading);
+  font-size: 0.875rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+/* Texto corrido da vitrine (depoimentos, rodapé): 15px, Raleway. */
+@utility text-store-body {
+  font-family: var(--font-store-body);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+/* Apoio pequeno (benefícios, selos, avisos): 12px, Montserrat. */
+@utility text-store-caption {
+  font-family: var(--font-store-heading);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+/* Selo (LANÇAMENTO, Esgotado): 11px, Montserrat 700. */
+@utility text-store-badge {
+  font-family: var(--font-store-heading);
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Rótulo em negrito pequeno (nome de categoria, "Compra verificada"): 13px, Montserrat 700. */
+@utility text-store-label {
+  font-family: var(--font-store-heading);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+/* Foco visível sobre fundo grafite ou rosé escuro. */
+@utility focus-on-dark {
+  &:focus-visible {
+    outline: 2px solid var(--color-on-dark);
+    outline-offset: 2px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilitários de layout                                               */
+/* ------------------------------------------------------------------ */
+
+/* Container: máx. 1280px, gutter 24px (16px no mobile) */
 @utility container-page {
   width: 100%;
   max-width: var(--container-page);
@@ -314,22 +618,97 @@
 }
 
 /*
- * Textura de grão: ruído sutil (3-4% de opacidade) para sensação tátil de tecido.
- * Use em um wrapper; o conteúdo fica acima da textura.
+ * Ritmo vertical ENTRE seções: use em cada seção que vem depois de outra (margem superior,
+ * não soma padding duplicado). 48px no mobile, 56px a partir de 768px, 64px a partir de 1024px.
  */
-@utility bg-grain {
-  position: relative;
-  isolation: isolate;
+@utility section-gap {
+  margin-top: 3rem;
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    opacity: var(--grain-opacity);
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  @media (width >= 48rem) {
+    margin-top: 3.5rem;
+  }
+  @media (width >= 64rem) {
+    margin-top: 4rem;
+  }
+}
+
+/*
+ * Recorte DIAGONAL na borda esquerda do bloco areia do hero: a borda é inclinada, com o topo mais à
+ * direita que a base (como na referência). Aplique no elemento de fundo areia, posicionado à direita.
+ * Ajuste a inclinação com --diagonal-inset (padrão 10% da largura do bloco). Só vale a partir de 768px:
+ * no celular o bloco fica reto, embaixo do texto.
+ */
+@utility clip-diagonal-left {
+  @media (width >= 48rem) {
+    clip-path: polygon(var(--diagonal-inset, 10%) 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* Cabeçalho de seção (título + link "VER TODOS →"): 24px de respiro até o conteúdo. */
+@utility section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilitários de movimento (todos desligados em reduced-motion)       */
+/* ------------------------------------------------------------------ */
+
+/* Crossfade de slide (400ms). Marque o slide ativo com data-active="true"; os demais saem do foco e da leitura. */
+@utility fade-slide {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--duration-slow) ease-in-out,
+    visibility 0s linear var(--duration-slow);
+
+  &[data-active='true'] {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity var(--duration-slow) ease-in-out,
+      visibility 0s;
+  }
+}
+
+/* Sobe 2px no hover (tiles, cards); a borda grafite fica por conta do componente. */
+@utility lift {
+  transition:
+    translate var(--duration-base) var(--ease-soft),
+    border-color var(--duration-base) var(--ease-soft),
+    box-shadow var(--duration-base) var(--ease-soft);
+
+  &:hover {
+    translate: 0 -2px;
+  }
+}
+
+/* Zoom leve da imagem no hover (o pai precisa ter `group` e `overflow-hidden`). */
+@utility image-zoom {
+  transition: scale var(--duration-slow) var(--ease-soft);
+
+  :where(.group:hover, .group:focus-visible) & {
+    scale: 1.04;
+  }
+}
+
+/* Seta "→" que desliza 4px no hover/foco (o pai precisa ter `group`). */
+@utility arrow-slide {
+  transition: translate var(--duration-base) var(--ease-soft);
+
+  :where(.group:hover, .group:focus-visible) & {
+    translate: 4px 0;
+  }
+}
+
+/* Anel de foco para fundo grafite (rosé suave sobre o grafite). */
+@utility focus-inverse {
+  &:focus-visible {
+    outline: 2px solid var(--color-rose-soft);
+    outline-offset: 2px;
   }
 }
 
@@ -347,16 +726,25 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
 
-  /* Entradas aparecem já no estado final; shimmer desligado */
+  /* Entradas aparecem já no estado final; shimmer e bump desligados */
   .animate-fade-up {
     animation: none;
     opacity: 1;
     translate: none;
   }
 
-  .animate-shimmer {
+  .animate-shimmer,
+  .animate-cart-bump {
     animation: none;
+  }
+
+  .lift:hover,
+  .image-zoom,
+  .arrow-slide {
+    translate: none !important;
+    scale: none !important;
   }
 }

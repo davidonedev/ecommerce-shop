@@ -21,9 +21,9 @@ interface ToastItem extends ToastInput {
 const ToastContext = createContext<((toast: ToastInput) => void) | null>(null)
 
 const toneIcon = {
-  success: <CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0 text-sage" />,
-  info: <Info aria-hidden className="mt-0.5 size-5 shrink-0 text-ink-muted" />,
-  error: <TriangleAlert aria-hidden className="mt-0.5 size-5 shrink-0 text-accent-hover" />,
+  success: <CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0 text-graphite" />,
+  info: <Info aria-hidden className="mt-0.5 size-5 shrink-0 text-text-muted" />,
+  error: <TriangleAlert aria-hidden className="mt-0.5 size-5 shrink-0 text-danger" />,
 } as const
 
 let nextId = 1
@@ -56,9 +56,9 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           >
             {toneIcon[t.tone ?? 'info']}
             <div className="flex-1">
-              <ToastPrimitive.Title className="font-sans font-medium text-body">{t.title}</ToastPrimitive.Title>
+              <ToastPrimitive.Title className="text-body font-medium">{t.title}</ToastPrimitive.Title>
               {t.description ? (
-                <ToastPrimitive.Description className="mt-0.5 text-small text-ink-muted">
+                <ToastPrimitive.Description className="mt-0.5 text-small text-text-muted">
                   {t.description}
                 </ToastPrimitive.Description>
               ) : null}
@@ -80,4 +80,9 @@ export function useToast() {
   const toast = useContext(ToastContext)
   if (!toast) throw new Error('useToast precisa estar dentro de <ToastProvider>.')
   return { toast }
+}
+
+/** Igual a useToast, mas devolve `null` fora do provedor (para componentes que funcionam com ou sem aviso). */
+export function useOptionalToast() {
+  return useContext(ToastContext)
 }
