@@ -13,7 +13,7 @@ export interface CategoryCardProps {
 }
 
 /**
- * Card de categoria com foto em ambiente e nome sobre um degradê marinho. O card inteiro é um link.
+ * Card de categoria com foto em ambiente e nome sobre um degradê grafite. O card inteiro é um link.
  * Para os tiles quadrados da home, use <CategoryTile />.
  */
 export function CategoryCard({
@@ -35,7 +35,7 @@ export function CategoryCard({
       )}
     >
       <Image src={category.image.src} alt={category.image.alt} fill sizes={sizes} className="image-zoom object-cover" />
-      <div aria-hidden className="absolute inset-0 bg-linear-to-t from-navy/85 via-navy/25 to-transparent" />
+      <div aria-hidden className="absolute inset-0 bg-linear-to-t from-graphite/85 via-graphite/25 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5 text-on-dark">
         <div>
           <h3 className="text-section-title">{category.name}</h3>

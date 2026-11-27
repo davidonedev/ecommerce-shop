@@ -5,7 +5,7 @@ import { buttonVariants, cx, type ButtonSize, type ButtonVariant } from './varia
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * primary (marinho), outline, caramel (sobre fundo marinho), ghost, link, cart (largura total, do card).
+   * primary (grafite), outline, rose (sobre fundo grafite), ghost, link, cart (largura total, do card).
    * `accent` e `secondary` são apelidos LEGADOS de primary e outline.
    */
   variant?: ButtonVariant

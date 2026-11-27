@@ -2,8 +2,8 @@ import type { HTMLAttributes } from 'react'
 import { badgeVariants } from './variants'
 
 /**
- * discount: "-20%" (marinho, canto superior direito da imagem);
- * customizable: "PERSONALIZÁVEL" (contorno caramelo, canto superior esquerdo).
+ * discount: "-20%" (grafite, canto superior direito da imagem);
+ * customizable: "PERSONALIZÁVEL" (contorno rosé, canto superior esquerdo).
  */
 export type BadgeTone = 'discount' | 'customizable' | 'bestseller' | 'new' | 'ready'
 

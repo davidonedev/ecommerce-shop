@@ -11,9 +11,9 @@
  *  - Radix:        `data-state="open|closed"`, `data-state="delayed-open"` (tooltip)
  *
  * Regras de contraste (WCAG AA) já embutidas aqui, ver docs/design-tokens.md:
- *  - texto sobre marinho: `text-on-dark` (secundário: `text-on-dark-muted`); foco sobre marinho: `focus-inverse`;
- *  - texto sobre caramelo: SEMPRE marinho (branco sobre caramelo dá 3,12:1);
- *  - texto pequeno em caramelo sobre claro: `text-caramel-ink` (o caramelo puro só em texto grande, bordas e preenchimentos);
+ *  - texto sobre grafite: `text-on-dark` (secundário: `text-on-graphite-muted`); foco sobre grafite: `focus-inverse`;
+ *  - texto sobre rosé: SEMPRE grafite (branco sobre rosé dá 3,12:1);
+ *  - texto pequeno em rosé sobre claro: `text-rose-strong` (o rosé puro só em texto grande, bordas e preenchimentos);
  *  - borda de campo/controle: `border-field-border` (o token `border` serve só para divisores decorativos);
  *  - `text-text-subtle` não é cor de leitura: só preço riscado e legenda decorativa.
  */
@@ -57,12 +57,12 @@ function createVariants<V extends Dict>(config: {
 /* Foco e interação (compartilhados)                                   */
 /* ------------------------------------------------------------------ */
 
-/** Anel marinho de 2px (17:1 sobre branco). Para fundo marinho, acrescente `focus-inverse`. */
-export const focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy'
+/** Anel grafite de 2px (17:1 sobre branco). Para fundo grafite, acrescente `focus-inverse`. */
+export const focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-graphite'
 
-/** Anel de foco para controles que ficam SOBRE fundo marinho (9,6:1). Use no lugar de `focusRing`, nunca junto. */
+/** Anel de foco para controles que ficam SOBRE fundo grafite (9,6:1). Use no lugar de `focusRing`, nunca junto. */
 export const focusRingInverse =
-  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-caramel-light'
+  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-soft'
 
 const pressable = 'transition duration-(--duration-button) ease-soft active:scale-[0.98] motion-reduce:active:scale-100'
 
@@ -81,24 +81,24 @@ const buttonBase = cx(
 )
 
 const buttonVariantClass = {
-  /** Ação padrão: fundo marinho, texto branco. */
-  primary: 'rounded-control bg-navy text-on-dark hover:bg-navy-hover',
-  /** Alternativa: fundo branco, borda e texto marinho. */
-  outline: 'rounded-control border border-navy bg-bg text-navy hover:bg-surface',
-  /** Sobre fundo marinho (barra superior, banners): caramelo claro com texto marinho (9,6:1). Use `focus-inverse`. */
-  caramel: 'rounded-control bg-caramel-light text-navy hover:bg-caramel',
-  ghost: 'rounded-control bg-transparent text-navy hover:bg-surface',
+  /** Ação padrão: fundo grafite, texto branco. */
+  primary: 'rounded-control bg-graphite text-on-dark hover:bg-graphite-hover',
+  /** Alternativa: fundo branco, borda e texto grafite. */
+  outline: 'rounded-control border border-graphite bg-bg text-graphite hover:bg-surface',
+  /** Sobre fundo grafite (barra superior, banners): rosé claro com texto grafite (9,6:1). Use `focus-inverse`. */
+  rose: 'rounded-control bg-rose-soft text-graphite hover:bg-rose',
+  ghost: 'rounded-control bg-transparent text-graphite hover:bg-surface',
   /** Link: não impõe área de toque mínima (exceção WCAG 2.2 para links em texto corrido). */
-  link: 'rounded-control text-navy underline decoration-1 underline-offset-4 hover:text-navy-hover hover:decoration-2',
-  /** Botão do card ("ADICIONAR AO CARRINHO" / "PERSONALIZAR"): largura total, vira marinho no hover (200ms). */
+  link: 'rounded-control text-graphite underline decoration-1 underline-offset-4 hover:text-graphite-hover hover:decoration-2',
+  /** Botão do card ("ADICIONAR AO CARRINHO" / "PERSONALIZAR"): largura total, vira grafite no hover (200ms). */
   cart: cx(
-    'w-full whitespace-normal rounded-control border border-field-border bg-bg px-3 py-2 text-center text-button-sm text-navy',
-    'hover:border-navy hover:bg-navy hover:text-on-dark',
+    'w-full whitespace-normal rounded-control border border-field-border bg-bg px-3 py-2 text-center text-button-sm text-graphite',
+    'hover:border-graphite hover:bg-graphite hover:text-on-dark',
   ),
   /** LEGADO: igual a `primary`. Mantido para as páginas antigas; use `primary`. */
-  accent: 'rounded-control bg-navy text-on-dark hover:bg-navy-hover',
+  accent: 'rounded-control bg-graphite text-on-dark hover:bg-graphite-hover',
   /** LEGADO: igual a `outline`. Mantido para as páginas antigas; use `outline`. */
-  secondary: 'rounded-control border border-navy bg-bg text-navy hover:bg-surface',
+  secondary: 'rounded-control border border-graphite bg-bg text-graphite hover:bg-surface',
 } as const
 
 /**
@@ -131,7 +131,7 @@ export function buttonVariants({
   const sizeClass = variant === 'link' ? linkSizeClass[size] : variant === 'cart' ? 'min-h-12' : buttonSizeClass[size]
   return cx(
     buttonBase,
-    variant === 'caramel' ? focusRingInverse : focusRing,
+    variant === 'rose' ? focusRingInverse : focusRing,
     buttonVariantClass[variant],
     sizeClass,
     className,
@@ -144,7 +144,7 @@ export function buttonVariants({
 
 export const iconButtonVariants = createVariants({
   base: cx(
-    'inline-flex shrink-0 items-center justify-center rounded-full bg-transparent text-navy hover:bg-surface',
+    'inline-flex shrink-0 items-center justify-center rounded-full bg-transparent text-graphite hover:bg-surface',
     'aria-pressed:bg-surface',
     pressable,
     focusRing,
@@ -169,14 +169,14 @@ export const badgeVariants = createVariants({
   base: 'inline-flex items-center gap-1 whitespace-nowrap rounded-control px-2 py-1',
   variants: {
     tone: {
-      /** "-20%": retângulo marinho, texto branco 11px/700. */
-      discount: 'bg-navy text-badge text-on-dark',
-      /** "PERSONALIZÁVEL": contorno caramelo, texto caramel-ink (texto pequeno). */
-      customizable: 'border border-caramel bg-bg text-badge-xs text-caramel-ink',
-      bestseller: 'bg-navy text-badge-xs text-on-dark',
-      new: 'bg-sand text-badge-xs text-navy',
-      /** Texto marinho sobre caramelo claro (9,6:1). */
-      ready: 'bg-caramel-light text-badge-xs text-navy',
+      /** "-20%": retângulo grafite, texto branco 11px/700. */
+      discount: 'bg-graphite text-badge text-on-dark',
+      /** "PERSONALIZÁVEL": contorno rosé, texto rose-strong (texto pequeno). */
+      customizable: 'border border-rose-strong bg-bg text-badge-xs text-rose-strong',
+      bestseller: 'bg-graphite text-badge-xs text-on-dark',
+      new: 'bg-sand text-badge-xs text-graphite',
+      /** Texto grafite sobre rosé claro (9,6:1). */
+      ready: 'bg-rose-soft text-badge-xs text-graphite',
     },
   },
   defaults: { tone: 'customizable' },
@@ -195,8 +195,8 @@ export const chipVariants = createVariants({
   ),
   variants: {
     selected: {
-      true: 'border-navy bg-navy text-on-dark',
-      false: 'border-field-border bg-bg text-text hover:border-navy hover:bg-surface',
+      true: 'border-graphite bg-graphite text-on-dark',
+      false: 'border-field-border bg-bg text-text hover:border-graphite hover:bg-surface',
     },
   },
   defaults: { selected: 'false' },
@@ -209,9 +209,9 @@ export const chipVariants = createVariants({
 export const inputClass = cx(
   'block h-11 w-full rounded-control border border-field-border bg-bg px-4 text-body text-text',
   'placeholder:text-text-muted',
-  'transition duration-(--duration-fast) ease-soft hover:border-navy',
+  'transition duration-(--duration-fast) ease-soft hover:border-graphite',
   focusRing,
-  'focus-visible:border-navy',
+  'focus-visible:border-graphite',
   'aria-[invalid=true]:border-danger',
   'disabled:cursor-not-allowed disabled:bg-surface disabled:text-text-muted',
 )
@@ -234,11 +234,11 @@ export const cardClass = cx(
   'motion-reduce:data-[interactive]:hover:translate-y-0',
 )
 
-/** Tile quadrado de categoria: fundo cinza-claro, sobe 2px e ganha borda marinho no hover. */
+/** Tile quadrado de categoria: fundo cinza-claro, sobe 2px e ganha borda grafite no hover. */
 export const categoryTileClass = cx(
-  'group relative block aspect-square overflow-hidden rounded-card border border-transparent bg-surface text-navy',
+  'group relative block aspect-square overflow-hidden rounded-card border border-transparent bg-surface text-graphite',
   'transition duration-(--duration-base) ease-soft',
-  'hover:-translate-y-0.5 hover:border-navy',
+  'hover:-translate-y-0.5 hover:border-graphite',
   'motion-reduce:hover:translate-y-0',
   focusRing,
 )
@@ -250,13 +250,13 @@ export const categoryTileClass = cx(
  */
 export const carouselArrowClass = {
   circle: cx(
-    'inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-border bg-bg text-navy shadow-soft',
-    'transition duration-(--duration-button) ease-soft hover:border-navy',
+    'inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-border bg-bg text-graphite shadow-soft',
+    'transition duration-(--duration-button) ease-soft hover:border-graphite',
     focusRing,
     'disabled:pointer-events-none disabled:opacity-40',
   ),
   chevron: cx(
-    'inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-transparent text-navy',
+    'inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-transparent text-graphite',
     'transition duration-(--duration-button) ease-soft hover:bg-surface',
     focusRing,
     'disabled:pointer-events-none disabled:opacity-40',
@@ -264,26 +264,26 @@ export const carouselArrowClass = {
 } as const
 
 /* ------------------------------------------------------------------ */
-/* Peças do topo e do rodapé (fundo marinho)                           */
+/* Peças do topo e do rodapé (fundo grafite)                           */
 /* ------------------------------------------------------------------ */
 
-/** Link de coluna do footer: cinza-claro, branco no hover. Foco com anel claro (fundo marinho). */
+/** Link de coluna do footer: cinza-claro, branco no hover. Foco com anel claro (fundo grafite). */
 export const footerLinkClass = cx(
-  'inline-flex min-h-8 items-center rounded-control text-small text-on-dark-muted transition-colors duration-(--duration-fast)',
+  'inline-flex min-h-8 items-center rounded-control text-small text-on-graphite-muted transition-colors duration-(--duration-fast)',
   'hover:text-on-dark hover:underline hover:underline-offset-4',
   focusRingInverse,
 )
 
 /** Ícone social do footer: círculo com contorno (alvo de 44px). */
 export const socialButtonClass = cx(
-  'inline-flex size-11 items-center justify-center rounded-full border border-on-dark-muted text-on-dark',
-  'transition duration-(--duration-button) ease-soft hover:bg-navy-hover hover:border-on-dark',
+  'inline-flex size-11 items-center justify-center rounded-full border border-on-graphite-muted text-on-dark',
+  'transition duration-(--duration-button) ease-soft hover:bg-graphite-hover hover:border-on-dark',
   focusRingInverse,
 )
 
-/** Selo de forma de pagamento: caixinha branca com texto marinho. */
+/** Selo de forma de pagamento: caixinha branca com texto grafite. */
 export const paymentBadgeClass =
-  'inline-flex h-7 min-w-12 items-center justify-center rounded-control bg-bg px-2 text-caption font-medium text-navy'
+  'inline-flex h-7 min-w-12 items-center justify-center rounded-control bg-bg px-2 text-caption font-medium text-graphite'
 
 /** Input colado ao botão ("e-mail + INSCREVER"): tira o raio e a borda do lado de encontro. */
 export const inputJoinedClass = 'rounded-r-none border-r-0'
@@ -293,17 +293,17 @@ export const buttonJoinedClass = 'rounded-l-none'
 /** Botão do ponto (alvo de toque de 44px de altura); o desenho do ponto é o filho. */
 export const carouselDotButtonClass = cx('inline-flex h-11 w-7 items-center justify-center rounded-control', focusRing)
 
-/** Desenho do ponto: pequeno e cinza; o ativo é caramelo e mais largo. */
+/** Desenho do ponto: pequeno e cinza; o ativo é rosé e mais largo. */
 export const carouselDotClass = {
   base: 'block h-2 rounded-full transition-all duration-(--duration-base) ease-soft',
-  active: 'w-6 bg-caramel',
+  active: 'w-6 bg-rose',
   inactive: 'w-2 bg-field-border',
 } as const
 
 /** Link de seção ("VER TODOS OS PRODUTOS →"). A seta usa `arrow-slide`. */
 export const sectionLinkClass = cx(
-  'group inline-flex min-h-11 items-center gap-2 rounded-control text-button-sm text-navy',
-  'hover:text-navy-hover hover:underline hover:underline-offset-4',
+  'group inline-flex min-h-11 items-center gap-2 rounded-control text-button-sm text-graphite',
+  'hover:text-graphite-hover hover:underline hover:underline-offset-4',
   focusRing,
 )
 
@@ -358,7 +358,7 @@ export const toastClass = cx(
 )
 
 export const tooltipClass = cx(
-  'z-50 max-w-xs rounded-control bg-navy px-3 py-1.5 text-small text-on-dark shadow-soft',
+  'z-50 max-w-xs rounded-control bg-graphite px-3 py-1.5 text-small text-on-dark shadow-soft',
   'data-[state=delayed-open]:animate-fade-in data-[state=instant-open]:animate-fade-in',
 )
 
@@ -371,7 +371,7 @@ export const accordionItemClass = 'border-b border-border'
 /** Dica: o ícone (chevron) deve ser filho direto do trigger; ele gira quando aberto. */
 export const accordionTriggerClass = cx(
   'flex min-h-12 w-full items-center justify-between gap-4 rounded-control py-4 text-left text-body font-medium text-text',
-  'transition duration-(--duration-fast) ease-soft hover:text-navy-hover',
+  'transition duration-(--duration-fast) ease-soft hover:text-graphite-hover',
   focusRing,
   '[&>svg]:shrink-0 [&>svg]:transition-transform [&>svg]:duration-(--duration-base) [&[data-state=open]>svg]:rotate-180',
 )

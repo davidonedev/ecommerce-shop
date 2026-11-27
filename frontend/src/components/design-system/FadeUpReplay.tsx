@@ -39,7 +39,7 @@ export function SlideFadeDemo() {
             key={text}
             data-active={index === active}
             aria-hidden={index !== active}
-            className="fade-slide absolute inset-0 flex items-center justify-center px-4 text-center text-section-title text-navy"
+            className="fade-slide absolute inset-0 flex items-center justify-center px-4 text-center text-section-title text-graphite"
           >
             {text}
           </p>
@@ -63,7 +63,7 @@ export function CartBumpDemo() {
   return (
     <div className="flex items-center gap-6">
       <span className="relative inline-flex">
-        <ShoppingCart aria-hidden strokeWidth={1.5} className="size-7 text-navy" />
+        <ShoppingCart aria-hidden strokeWidth={1.5} className="size-7 text-graphite" />
         <CountBadge count={count} className="absolute -right-2 -top-2" />
       </span>
       <button

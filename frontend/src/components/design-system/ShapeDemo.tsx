@@ -22,7 +22,7 @@ export function SpacingDemo() {
             {s.step} · {s.px}px
           </span>
           <span
-            className="block h-3 rounded-full bg-caramel"
+            className="block h-3 rounded-full bg-rose"
             style={{ width: `calc(var(--spacing) * ${s.step})` }}
             aria-hidden="true"
           />

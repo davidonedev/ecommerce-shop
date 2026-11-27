@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /*
- * DESIGN SYSTEM, azul-marinho + caramelo.
+ * DESIGN SYSTEM, rosé + grafite.
  * Fonte de verdade dos tokens: este arquivo (CSS), espelhado em src/lib/tokens/tokens.ts
  * (um teste confere que os dois não se afastam). Guia de uso: docs/design-tokens.md
  */
@@ -10,12 +10,8 @@
 /* Tokens (static: sempre emitidos como variáveis CSS em :root)        */
 /* ------------------------------------------------------------------ */
 @theme static {
-  /* Cores da marca (hex do briefing, não alterar) */
-  --color-navy: #0f1b33; /* Azul-marinho: estrutura e ação */
-  --color-navy-hover: #1a2a4a;
-  --color-caramel: #b48a5e; /* Caramelo: destaque (preenchimento, borda, texto grande) */
-  --color-caramel-light: #d9be9c;
-  --color-sand: #efe7dd; /* Areia */
+  /* Base neutra (a paleta rosé e grafite fica mais abaixo) */
+  --color-sand: #f5ebe6; /* Areia */
   --color-bg: #ffffff;
   --color-surface: #f4f4f5;
   --color-text: #111827;
@@ -26,11 +22,9 @@
   --color-on-dark: #ffffff;
 
   /* Derivados (criados para passar no contraste WCAG AA; ver docs/design-tokens.md) */
-  --color-caramel-ink: #7e6142; /* Caramelo escuro para TEXTO pequeno sobre claro (5,71:1 no branco) */
   --color-field-border: #80868f; /* Borda de campo e de controles (3,67:1, exigência de 3:1) */
-  --color-on-dark-muted: #c4cad6; /* Texto secundário sobre marinho (footer, barra superior) */
   --color-danger: #b42318; /* Erros de formulário e aviso de erro */
-  --color-scrim: rgb(15 27 51 / 0.55); /* Véu atrás de modais e drawers */
+  --color-scrim: rgb(33 33 33 / 0.55); /* Véu atrás de modais e drawers */
 
   /*
    * Vitrine rosé + grafite (home e estrutura do site). Medidas nos prints da referência;
@@ -41,7 +35,8 @@
   --color-rose-strong-hover: #864b46;
   --color-rose-soft: #f7e4e0; /* Fundo suave */
   --color-cream: #faf4f0; /* Fundo do hero e dos banners de coleção */
-  --color-graphite: #3b3b3b; /* Estrutura: header e rodapé */
+  --color-graphite: #3b3b3b; /* Estrutura e ação: header, rodapé, botão primário */
+  --color-graphite-hover: #2b2b2b; /* Hover dos botões grafite */
   --color-on-graphite-muted: #d4d4d4; /* Texto secundário sobre grafite */
   --color-success: #1b7f2e; /* "Compra verificada" */
   --color-soldout: #d10a0a; /* Selo "Esgotado" */
@@ -57,9 +52,9 @@
   --radius-lg: 0.5rem;
 
   /* Sombras: mínimas. A separação é feita por fundo e borda fina. */
-  --shadow-soft: 0 1px 2px rgb(15 27 51 / 0.05);
-  --shadow-hover: 0 6px 20px rgb(15 27 51 / 0.08);
-  --shadow-lift: 0 10px 32px rgb(15 27 51 / 0.18); /* Só sobreposições: modal, drawer, toast */
+  --shadow-soft: 0 1px 2px rgb(33 33 33 / 0.05);
+  --shadow-hover: 0 6px 20px rgb(33 33 33 / 0.08);
+  --shadow-lift: 0 10px 32px rgb(33 33 33 / 0.18); /* Só sobreposições: modal, drawer, toast */
 
   /* Tipografia legada (outras páginas e vitrine). Os estilos novos são @utility mais abaixo. */
   --text-display-xl: clamp(2.125rem, 1.667rem + 2.037vw, 3.5rem);
@@ -260,12 +255,12 @@
 @theme inline {
   --color-ink: var(--color-text);
   --color-ink-muted: var(--color-text-muted);
-  --color-accent: var(--color-navy);
-  --color-accent-hover: var(--color-navy-hover);
+  --color-accent: var(--color-graphite);
+  --color-accent-hover: var(--color-graphite-hover);
   --color-on-accent: var(--color-on-dark);
   --color-blush: var(--color-sand);
-  --color-sage: var(--color-caramel);
-  --color-on-sage: var(--color-navy);
+  --color-sage: var(--color-rose);
+  --color-on-sage: var(--color-graphite);
 }
 
 /* Fontes: as variáveis (--font-poppins etc.) vêm do next/font, aplicadas no <html> (src/app/fonts.ts). */
@@ -283,36 +278,6 @@
   --font-personalize-elegant: var(--font-playfair), ui-serif, Georgia, serif;
   --font-personalize-script: var(--font-caveat), cursive;
   --font-personalize-bold: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-}
-
-/* ------------------------------------------------------------------ */
-/* Modo escuro: PREPARADO, não ativado.                                */
-/* Para ativar: <html data-theme="dark">. Hoje nada define esse atributo. */
-/* Atenção: footer e barra superior usam bg-navy como superfície estrutural; ao ativar o escuro, */
-/* introduzir um token próprio para elas (hoje bg-navy vira o tom claro dos botões). */
-/* ------------------------------------------------------------------ */
-[data-theme='dark'] {
-  color-scheme: dark;
-  --color-navy: #d9be9c;
-  --color-navy-hover: #e7d3b5;
-  --color-caramel: #c79b6d;
-  --color-caramel-light: #4a3b2a;
-  --color-caramel-ink: #d9be9c;
-  --color-sand: #1b2438;
-  --color-bg: #0b1220;
-  --color-surface: #131c2e;
-  --color-text: #f3f4f6;
-  --color-text-muted: #a7aebb;
-  --color-text-subtle: #8a93a5;
-  --color-border: #26324a;
-  --color-field-border: #7c869a;
-  --color-on-dark: #0f1b33;
-  --color-on-dark-muted: #3b4660;
-  --color-danger: #f87171;
-  --color-scrim: rgb(0 0 0 / 0.6);
-  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.4);
-  --shadow-hover: 0 6px 20px rgb(0 0 0 / 0.4);
-  --shadow-lift: 0 10px 32px rgb(0 0 0 / 0.55);
 }
 
 /* ------------------------------------------------------------------ */
@@ -347,15 +312,15 @@
     text-wrap: balance;
   }
 
-  /* Foco visível global: anel marinho de 2px (17:1 sobre branco). Sobre fundo marinho use `focus-inverse`. */
+  /* Foco visível global: anel grafite de 2px (17:1 sobre branco). Sobre fundo grafite use `focus-inverse`. */
   :focus-visible {
-    outline: 2px solid var(--color-navy);
+    outline: 2px solid var(--color-graphite);
     outline-offset: 2px;
   }
 
   ::selection {
-    background: var(--color-caramel-light);
-    color: var(--color-navy);
+    background: var(--color-rose-soft);
+    color: var(--color-graphite);
   }
 }
 
@@ -364,7 +329,7 @@
 /* Tailwind: text-<nome>. Todos fluidos entre 360px e 1440px.          */
 /* ------------------------------------------------------------------ */
 
-/* "BEM-VINDO À [NOME DA LOJA]": 13px, caixa alta. Cor: text-caramel-ink (texto pequeno sobre claro). */
+/* "BEM-VINDO À [NOME DA LOJA]": 13px, caixa alta. Cor: text-rose-strong (texto pequeno sobre claro). */
 @utility text-overline {
   font-family: var(--font-heading);
   font-size: 0.8125rem;
@@ -384,7 +349,7 @@
   text-transform: uppercase;
 }
 
-/* Frase manuscrita (Allura): 36px → 26px. Texto GRANDE: caramelo (3,12:1) só sobre fundo branco; sobre areia use caramel-ink. */
+/* Frase manuscrita (Allura): 36px → 26px. Texto GRANDE: rosé (3,12:1) só sobre fundo branco; sobre areia use rose-strong. */
 @utility text-script {
   font-family: var(--font-script);
   font-size: clamp(1.625rem, 1.417rem + 0.926vw, 2.25rem);
@@ -709,7 +674,7 @@
   }
 }
 
-/* Sobe 2px no hover (tiles, cards); a borda marinho fica por conta do componente. */
+/* Sobe 2px no hover (tiles, cards); a borda grafite fica por conta do componente. */
 @utility lift {
   transition:
     translate var(--duration-base) var(--ease-soft),
@@ -739,10 +704,10 @@
   }
 }
 
-/* Anel de foco para fundo marinho (branco-caramelo claro, 9,6:1 sobre o marinho). */
+/* Anel de foco para fundo grafite (rosé suave sobre o grafite). */
 @utility focus-inverse {
   &:focus-visible {
-    outline: 2px solid var(--color-caramel-light);
+    outline: 2px solid var(--color-rose-soft);
     outline-offset: 2px;
   }
 }

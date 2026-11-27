@@ -32,7 +32,7 @@ describe('ProductCard variant="shop"', () => {
     render(<ProductCard variant="shop" product={make({ price: 159.99, oldPrice: 199.99 })} />)
 
     const badge = screen.getByText(/^-20%/)
-    expect(badge.className).toContain('bg-navy')
+    expect(badge.className).toContain('bg-graphite')
     expect(badge).toHaveTextContent('-20% de desconto')
 
     const price = screen.getByText('R$ 159,99')
@@ -53,7 +53,7 @@ describe('ProductCard variant="shop"', () => {
 
   it('mostra o selo PERSONALIZÁVEL à esquerda só quando o produto tem esse selo', () => {
     const { rerender } = render(<ProductCard variant="shop" product={make({ badges: ['customizable'] })} />)
-    expect(screen.getByText('Personalizável').className).toContain('border-caramel')
+    expect(screen.getByText('Personalizável').className).toContain('border-rose-strong')
 
     rerender(<ProductCard variant="shop" product={make({ badges: [] })} />)
     expect(screen.queryByText('Personalizável')).toBeNull()

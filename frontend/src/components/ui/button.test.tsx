@@ -50,22 +50,22 @@ describe('Button', () => {
 
     const link = screen.getByRole('link', { name: 'Criar o meu' })
     expect(link).toHaveAttribute('href', '/personalizar')
-    expect(link.className).toContain('bg-navy')
+    expect(link.className).toContain('bg-graphite')
   })
 
-  it('o apelido legado accent tem o mesmo visual do primary (marinho)', () => {
+  it('o apelido legado accent tem o mesmo visual do primary (grafite)', () => {
     render(<Button variant="accent">Legado</Button>)
-    expect(screen.getByRole('button', { name: 'Legado' }).className).toContain('bg-navy')
+    expect(screen.getByRole('button', { name: 'Legado' }).className).toContain('bg-graphite')
   })
 
-  it('variant cart ocupa a largura toda, aceita quebra de linha e fica marinho no hover', () => {
+  it('variant cart ocupa a largura toda, aceita quebra de linha e fica grafite no hover', () => {
     render(<Button variant="cart">Adicionar ao carrinho</Button>)
 
     const { className } = screen.getByRole('button', { name: 'Adicionar ao carrinho' })
     expect(className).toContain('w-full')
     expect(className).toContain('whitespace-normal')
     expect(className).not.toContain('whitespace-nowrap')
-    expect(className).toContain('hover:bg-navy')
+    expect(className).toContain('hover:bg-graphite')
     expect(className).toContain('hover:text-on-dark')
     expect(className).toContain('text-button-sm')
     expect(className).toContain('min-h-12')
@@ -82,19 +82,19 @@ describe('Button', () => {
     expect(button.lastElementChild).toBe(svg)
   })
 
-  it('variant caramel usa o anel de foco claro (fica sobre fundo marinho) e texto marinho', () => {
-    render(<Button variant="caramel">Fale conosco</Button>)
+  it('variant rose usa o anel de foco claro (fica sobre fundo grafite) e texto grafite', () => {
+    render(<Button variant="rose">Fale conosco</Button>)
 
     const { className } = screen.getByRole('button', { name: 'Fale conosco' })
-    expect(className).toContain('bg-caramel-light')
-    expect(className).toContain('text-navy')
-    expect(className).toContain('focus-visible:outline-caramel-light')
-    expect(className).not.toContain('focus-visible:outline-navy')
+    expect(className).toContain('bg-rose-soft')
+    expect(className).toContain('text-graphite')
+    expect(className).toContain('focus-visible:outline-rose-soft')
+    expect(className).not.toContain('focus-visible:outline-graphite')
   })
 
   it('size xs é compacto mas estende a área de toque a 44px por pseudo-elemento', () => {
     render(
-      <Button variant="caramel" size="xs">
+      <Button variant="rose" size="xs">
         Fale conosco
       </Button>,
     )
@@ -106,7 +106,7 @@ describe('Button', () => {
 
   it('classes passadas por quem usa vencem as do botão (hidden md:inline-flex esconde no celular)', () => {
     render(
-      <Button variant="caramel" size="xs" className="hidden md:inline-flex">
+      <Button variant="rose" size="xs" className="hidden md:inline-flex">
         Fale conosco
       </Button>,
     )

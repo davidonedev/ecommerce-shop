@@ -32,7 +32,7 @@ export function TokenShowcase() {
             <li key={id}>
               <a
                 href={`#${id}`}
-                className="text-nav inline-flex min-h-11 items-center rounded-control px-4 text-navy hover:bg-surface"
+                className="text-nav inline-flex min-h-11 items-center rounded-control px-4 text-graphite hover:bg-surface"
               >
                 {label}
               </a>
@@ -44,7 +44,7 @@ export function TokenShowcase() {
       <Section
         id="cores"
         title="Paleta"
-        description="Azul-marinho para estrutura e ação, caramelo só como destaque e o resto neutro. Os derivados (caramelo escuro, borda de campo, texto sobre marinho, erro) existem só para passar no contraste."
+        description="Grafite para estrutura e ação, rosé só como destaque e o resto neutro. Os derivados (rosé escuro, borda de campo, texto sobre grafite, erro) existem só para passar no contraste."
       >
         <ColorSwatches />
       </Section>

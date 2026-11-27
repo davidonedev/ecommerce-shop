@@ -2,10 +2,10 @@ import { typeScale } from '@/lib/tokens'
 
 /** Classes literais (o Tailwind só gera o que encontra escrito por extenso). */
 const sampleClass: Record<(typeof typeScale)[number]['name'], string> = {
-  overline: 'text-overline text-caramel-ink',
-  'display-hero': 'text-display-hero text-navy',
-  script: 'text-script text-caramel',
-  'section-title': 'text-section-title text-navy',
+  overline: 'text-overline text-rose-strong',
+  'display-hero': 'text-display-hero text-graphite',
+  script: 'text-script text-rose-strong',
+  'section-title': 'text-section-title text-graphite',
   nav: 'text-nav text-text',
   button: 'text-button text-text',
   'button-sm': 'text-button-sm text-text',

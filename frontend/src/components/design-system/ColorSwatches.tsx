@@ -25,14 +25,6 @@ export function ColorSwatches() {
               {'derived' in color && color.derived ? ' · derivado' : ''}
             </p>
             <p className="mt-2 text-small text-text-muted">{color.usage}</p>
-            <p className="mt-2 flex items-center gap-2 text-caption text-text-muted">
-              <span
-                aria-hidden="true"
-                className="inline-block size-4 rounded-full border border-field-border"
-                style={{ background: color.darkHex }}
-              />
-              Escuro: {color.darkHex}
-            </p>
           </div>
         </li>
       ))}

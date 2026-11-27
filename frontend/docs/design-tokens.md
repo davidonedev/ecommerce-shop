@@ -1,6 +1,6 @@
-# Design tokens: azul-marinho + caramelo
+# Design tokens: rosé + grafite
 
-Loja moderna e comercial: **azul-marinho** para estrutura e ação, **caramelo** só como destaque, títulos em **caixa alta e negrito** (Poppins), texto em Inter e **uma** frase manuscrita (Allura) por seção de destaque.
+Loja moderna e comercial: **grafite** para estrutura e ação, **rosé** como cor de destaque, títulos em **caixa alta e negrito** (Poppins), texto em Inter e **uma** frase manuscrita (Allura) por seção de destaque.
 
 - **Fonte de verdade:** `src/app/globals.css` (variáveis CSS + tema do Tailwind + utilitários).
 - **Espelho em código:** `src/lib/tokens/tokens.ts`. O teste `tokens.test.ts` falha se o CSS e o TypeScript se afastarem, ou se a decisão de contraste de algum par deixar de ser verdadeira.
@@ -11,63 +11,65 @@ Regra de ouro: **nenhuma cor, tamanho ou raio solto no código.** Use as classes
 
 ## Cores
 
-| Classe                               | Hex                    | Uso                                                                        |
-| ------------------------------------ | ---------------------- | -------------------------------------------------------------------------- |
-| `bg-navy` / `text-navy`              | `#0F1B33` Azul-marinho | Botão primário, títulos, barra superior, footer, selo e badge de desconto  |
-| `bg-navy-hover`                      | `#1A2A4A`              | Hover do primário                                                          |
-| `bg-caramel` / `text-caramel`        | `#B48A5E` Caramelo     | Frase manuscrita, ponto ativo, painel de oferta, bordas de destaque        |
-| `bg-caramel-light`                   | `#D9BE9C`              | Botão "Fale conosco", "50%" do selo                                        |
-| `bg-sand`                            | `#EFE7DD` Areia        | Fundo do hero, tons quentes                                                |
-| `bg-bg`                              | `#FFFFFF`              | Fundo da página                                                            |
-| `bg-surface`                         | `#F4F4F5`              | Tiles de categoria, imagem dos cards, painel 3                             |
-| `text-text`                          | `#111827`              | Texto principal                                                            |
-| `text-text-muted`                    | `#5B6170`              | Descrições, apoio, placeholder                                             |
-| `text-text-subtle`                   | `#9CA3AF`              | **Só** preço riscado e legenda decorativa                                  |
-| `text-star`                          | `#F5A623`              | Estrelas de avaliação                                                      |
-| `border-border`                      | `#E5E7EB`              | Borda de cards e divisores **decorativos**                                 |
-| `text-on-dark`                       | `#FFFFFF`              | Texto sobre marinho                                                        |
-| **`text-caramel-ink`** (derivado)    | `#7E6142`              | Texto **pequeno** em caramelo sobre claro (overline, badge Personalizável) |
-| **`border-field-border`** (derivado) | `#80868F`              | Borda de input, select, botão do card; ponto inativo do carrossel          |
-| **`text-on-dark-muted`** (derivado)  | `#C4CAD6`              | Texto secundário sobre marinho (footer, barra superior)                    |
-| **`text-danger`** (derivado)         | `#B42318`              | Mensagem de erro de formulário e aviso de erro                             |
-| `bg-scrim`                           | `rgb(15 27 51 / .55)`  | Véu atrás de modais e drawers                                              |
+| Classe                               | Hex                   | Uso                                                                         |
+| ------------------------------------ | --------------------- | --------------------------------------------------------------------------- |
+| `bg-graphite` / `text-graphite`      | `#3B3B3B` Grafite     | Botão primário, títulos, header, rodapé, selo e badge de desconto           |
+| `bg-graphite-hover`                  | `#2B2B2B`             | Hover do primário                                                           |
+| `bg-rose`                            | `#E6ACA4` Rosé        | Barra de aviso, newsletter, painel de oferta, selos, linhas decorativas. **Só fundo e decoração** |
+| `bg-rose-soft`                       | `#F7E4E0`             | Botão "Fale conosco", "50%" do selo, fundos suaves                          |
+| `bg-cream`                           | `#FAF4F0` Creme       | Fundo do hero e dos banners de coleção                                      |
+| `bg-sand`                            | `#F5EBE6` Areia       | Tons quentes de apoio                                                       |
+| `bg-bg`                              | `#FFFFFF`             | Fundo da página                                                             |
+| `bg-surface`                         | `#F4F4F5`             | Tiles de categoria, imagem dos cards, painel 3                              |
+| `text-text`                          | `#111827`             | Texto principal                                                             |
+| `text-text-muted`                    | `#5B6170`             | Descrições, apoio, placeholder                                              |
+| `text-text-subtle`                   | `#9CA3AF`             | **Só** preço riscado e legenda decorativa                                   |
+| `text-star`                          | `#F5A623`             | Estrelas de avaliação                                                       |
+| `border-border`                      | `#E5E7EB`             | Borda de cards e divisores **decorativos**                                  |
+| `text-on-dark`                       | `#FFFFFF`             | Texto sobre grafite ou rosé escuro                                          |
+| **`text-rose-strong`** (derivado)    | `#9C5953` Rosé escuro | Botões, preços e texto **pequeno** em rosé sobre claro (overline, badge)    |
+| **`bg-rose-strong-hover`** (derivado)| `#864B46`             | Hover dos botões rosé escuro                                                |
+| **`border-field-border`** (derivado) | `#80868F`             | Borda de input, select, botão do card; ponto inativo do carrossel           |
+| **`text-on-graphite-muted`** (derivado) | `#D4D4D4`          | Texto secundário sobre grafite (rodapé, barra superior)                     |
+| **`text-danger`** (derivado)         | `#B42318`             | Mensagem de erro de formulário e aviso de erro                              |
+| **`text-success`** / **`bg-soldout`** | `#1B7F2E` / `#D10A0A` | "Compra verificada" / selo "Esgotado"                                    |
+| `bg-scrim`                           | `rgb(33 33 33 / .55)` | Véu atrás de modais e drawers                                               |
 
-Os hex da tabela do briefing **não foram alterados**. Os 4 derivados existem só para passar no contraste, mantendo a mesma família de cor.
+Os derivados existem só para passar no contraste, mantendo a mesma família de cor. Não há modo escuro.
 
 ### Contraste (WCAG AA): decisão de uso de cada par
 
 Texto precisa de **4,5:1**; texto grande (≥ 24px, ou ≥ 18,66px em negrito) e elementos de interface, de **3:1**. A vitrine mostra esta tabela calculada ao vivo (`lib/tokens/contrast-pairs.ts`).
 
-| Par                              | Razão                 | Decisão                                                                                                                                            |
-| -------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| text / bg, sand, surface         | 17,74 / 14,48 / 16,14 | Passa. Texto principal.                                                                                                                            |
-| text-muted / bg, sand, surface   | 6,20 / 5,06 / 5,64    | Passa. Descrições e **placeholder**.                                                                                                               |
-| on-dark / navy, navy-hover       | 17,14 / 14,25         | Passa. Botão primário, barra, footer, badge `-20%`.                                                                                                |
-| navy / bg, sand, surface         | 17,14 / 14,00 / 15,60 | Passa. Títulos, botão outline, painel 3.                                                                                                           |
-| on-dark-muted / navy, navy-hover | 10,42 / 8,66          | Passa. Texto secundário do footer.                                                                                                                 |
-| **caramel / bg**                 | **3,12**              | **Reprova para texto pequeno.** Só texto grande (Allura ≥ 26px) e UI.                                                                              |
-| caramel-ink / bg, surface, sand  | 5,71 / 5,20 / 4,66    | Passa. Substitui o caramelo em texto pequeno.                                                                                                      |
-| **on-dark (branco) / caramel**   | **3,12**              | **Reprova.** Texto sobre caramelo é sempre **marinho**.                                                                                            |
-| navy / caramel, caramel-light    | 5,50 / 9,63           | Passa. Painel de oferta e botão caramelo.                                                                                                          |
-| caramel-light / navy             | 9,63                  | Passa. "50%" do selo e trecho final da barra superior.                                                                                             |
-| caramel / navy                   | 5,50                  | Passa. Realce caramelo sobre marinho.                                                                                                              |
-| **text-subtle / bg**             | **2,54**              | **Reprova até como UI.** Só preço riscado (que também sai em texto: "Preço anterior:") e legenda decorativa.                                       |
-| **border / bg**                  | **1,24**              | **Reprova como borda de campo.** Só divisor decorativo.                                                                                            |
-| field-border / bg, surface       | 3,67 / 3,34           | Passa (3:1). Borda de input e controles.                                                                                                           |
-| field-border / **sand**          | **2,99**              | Quase: **não** use como borda essencial sobre areia (use `border-text-muted`).                                                                     |
-| **text-muted / navy**            | **2,77**              | **Reprova.** Use `on-dark-muted`.                                                                                                                  |
-| danger / bg, surface             | 6,57 / 5,98           | Passa.                                                                                                                                             |
-| navy (foco) / bg                 | 17,14                 | Passa. Anel de foco de 2px.                                                                                                                        |
-| caramel-light (foco) / navy      | 9,63                  | Passa. Anel de foco sobre fundo marinho (`focus-inverse`).                                                                                         |
-| **star / bg**                    | **2,03**              | **Reprova como gráfico isolado.** Mitigação: a nota também vai em texto (`<Rating showValue />`) e no `aria-label` ("4,9 de 5, 2.300 avaliações"). |
+| Par                                  | Razão                  | Decisão                                                                                                                                            |
+| ------------------------------------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| text / bg, sand, surface             | 17,74 / 15,13 / 16,14  | Passa. Texto principal.                                                                                                                            |
+| text-muted / bg, sand, surface       | 6,20 / 5,28 / 5,64     | Passa. Descrições e **placeholder**.                                                                                                               |
+| on-dark / graphite, graphite-hover   | 11,20 / 14,16          | Passa. Botão primário, header, rodapé, badge `-20%`.                                                                                               |
+| graphite / bg, sand, surface         | 11,20 / 9,55 / 10,19   | Passa. Títulos, botão outline, painel 3.                                                                                                           |
+| on-graphite-muted / graphite         | 7,56                   | Passa. Texto secundário do rodapé.                                                                                                                 |
+| rose-strong / bg, surface, sand      | 5,29 / 4,82 / 4,51     | Passa. Preço, botão, overline e texto pequeno em rosé.                                                                                             |
+| **rose / bg**                        | **1,94**               | **Reprova como texto.** O rosé claro é só fundo e decoração.                                                                                       |
+| **on-dark (branco) / rose**          | **1,94**               | **Reprova.** Texto sobre o rosé claro é sempre **grafite**.                                                                                        |
+| graphite / rose, rose-soft           | 5,76 / 9,14            | Passa. Painel de oferta, barra de aviso, botão "Fale conosco".                                                                                     |
+| rose-soft / graphite                 | 9,14                   | Passa. "50%" do selo e trecho final da barra superior.                                                                                             |
+| rose / graphite                      | 5,76                   | Passa. Logotipo e realces rosé sobre grafite.                                                                                                      |
+| **text-subtle / bg**                 | **2,54**               | **Reprova até como UI.** Só preço riscado (que também sai em texto: "Preço anterior:") e legenda decorativa.                                       |
+| **border / bg**                      | **1,24**               | **Reprova como borda de campo.** Só divisor decorativo.                                                                                            |
+| field-border / bg, surface, sand     | 3,67 / 3,34 / 3,13     | Passa (3:1). Borda de input e controles.                                                                                                           |
+| **text-muted / graphite**            | **1,81**               | **Reprova.** Use `on-graphite-muted`.                                                                                                              |
+| danger / bg, surface                 | 6,57 / 5,98            | Passa.                                                                                                                                             |
+| graphite (foco) / bg                 | 11,20                  | Passa. Anel de foco de 2px.                                                                                                                        |
+| rose-soft (foco) / graphite          | 9,14                   | Passa. Anel de foco sobre fundo grafite (`focus-inverse`).                                                                                         |
+| **star / bg**                        | **2,03**               | **Reprova como gráfico isolado.** Mitigação: a nota também vai em texto (`<Rating showValue />`) e no `aria-label` ("4,9 de 5, 2.300 avaliações"). |
 
 Regras decorrentes:
 
-1. **Texto sobre marinho:** `text-on-dark` (secundário: `text-on-dark-muted`). **Foco sobre marinho:** `focus-inverse` (ou `focusRingInverse` nas receitas).
-2. **Texto sobre caramelo:** **sempre marinho.** Nunca branco.
-3. **Caramelo em texto pequeno sobre claro:** `text-caramel-ink`. O caramelo puro é para preenchimento, borda e texto grande.
+1. **Texto sobre grafite:** `text-on-dark` (secundário: `text-on-graphite-muted`). **Foco sobre grafite:** `focus-inverse` (ou `focusRingInverse` nas receitas).
+2. **Texto sobre o rosé claro:** **sempre grafite.** Nunca branco.
+3. **Rosé em texto sobre claro:** `text-rose-strong`. O rosé claro é para preenchimento e decoração.
 4. **Placeholder e descrição:** `text-text-muted`, nunca `text-text-subtle`.
-5. **Frase manuscrita (Allura):** caramelo **só sobre branco** (3,12:1, texto grande). Sobre areia, use `text-caramel-ink`.
+5. **Frase manuscrita (Allura):** `text-rose-strong`.
 
 ## Tipografia
 
@@ -75,10 +77,10 @@ Poppins (600/700/800) em títulos, menu, botões e preço; Inter (400/500) no te
 
 | Classe                                     | Tamanho (360 → 1440) | Fonte / peso            | Caixa         | Uso                                               |
 | ------------------------------------------ | -------------------- | ----------------------- | ------------- | ------------------------------------------------- |
-| `text-topbar`                              | 12 → 20px            | Poppins 800             | ALTA          | Barra superior (trecho final em `text-caramel`)   |
-| `text-overline`                            | 13px                 | Poppins 600, 0,12em     | ALTA          | "BEM-VINDO À [NOME DA LOJA]" (`text-caramel-ink`) |
+| `text-topbar`                              | 12 → 20px            | Poppins 800             | ALTA          | Barra superior (trecho final em `text-rose`)   |
+| `text-overline`                            | 13px                 | Poppins 600, 0,12em     | ALTA          | "BEM-VINDO À [NOME DA LOJA]" (`text-rose-strong`) |
 | `text-display-hero`                        | 34 → 56px, lh 1,05   | Poppins 800             | ALTA          | Único h1 da home                                  |
-| `text-script`                              | 26 → 36px            | Allura 400              | normal        | Frase manuscrita (caramelo sobre branco)          |
+| `text-script`                              | 26 → 36px            | Allura 400              | normal        | Frase manuscrita (rosé escuro sobre branco)          |
 | `text-section-title`                       | 18 → 20px, 0,04em    | Poppins 700             | ALTA          | H2 de seção, título de modal/drawer               |
 | `text-nav`                                 | 13px, 0,06em         | Poppins 600             | ALTA          | Menu                                              |
 | `text-button`                              | 13px, 0,06em         | Poppins 600             | ALTA          | Botões                                            |
@@ -110,8 +112,8 @@ O texto do **cliente** nas prévias e em `/personalizar` usa 4 fontes que só ca
 - **`section-gap`**: ritmo vertical **entre** seções, como margem superior (48px no celular, 56px a partir de 768px, 64px a partir de 1024px). Aplique em cada seção que vem depois de outra; não some `padding` por cima.
 - `section-head`: linha do título da seção com o link à direita, 24px de respiro até o conteúdo.
 - Raios: `rounded-control` 4px (botões, inputs, badges), `rounded-card` 8px (cards, tiles, modais), `rounded-panel` 8px (faixa promocional), `rounded-full` (selo de desconto, contador, setas). **Legado:** `rounded-sm/md/lg` = 4/8/8.
-- Sombras mínimas: `shadow-soft` (quase nada), `shadow-hover` (`0 6px 20px rgb(15 27 51 / .08)`, hover de card), `shadow-lift` (só modal, drawer, toast). A separação é por borda de 1px.
-- Ícones: **Lucide**, `strokeWidth={1.5}`, 20 a 24px, cor marinho. O Lucide atual **não tem ícones de marcas** (Instagram, Facebook...): use SVGs próprios nas redes sociais.
+- Sombras mínimas: `shadow-soft` (quase nada), `shadow-hover` (`0 6px 20px rgb(33 33 33 / .08)`, hover de card), `shadow-lift` (só modal, drawer, toast). A separação é por borda de 1px.
+- Ícones: **Lucide**, `strokeWidth={1.5}`, 20 a 24px, cor grafite. O Lucide atual **não tem ícones de marcas** (Instagram, Facebook...): use SVGs próprios nas redes sociais.
 - Breakpoints: `xs` 360, `sm` 640, `md` 768, `lg` 1024, `xl` 1280, `2xl` 1440.
 
 ### Recorte diagonal do hero
@@ -134,22 +136,22 @@ Discreto e funcional. Sem autoplay, sem parallax, sem rolagem sequestrada.
 
 | Componente                                                             | Notas                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Button`                                                               | `variant`: `primary`, `outline`, `caramel` (**só sobre fundo marinho**), `ghost`, `link`, `cart`. `size`: `xs`, `sm`, `md`, `lg`. `arrow` acrescenta "→"; com `asChild`, use `<ButtonArrow />` dentro do filho. Todos com alvo de toque de 44px (o `xs` estende por pseudo-elemento). **Classes extras passadas em `className` vencem as do botão** (`hidden md:inline-flex` esconde o botão no celular). |
-| `Button variant="cart"`                                                | Largura total, outline cinza, ícone à esquerda, 12px caixa alta; hover vira marinho em 200ms. O rótulo pode **quebrar em 2 linhas** em cards estreitos (altura mínima de 48px mantém o alinhamento).                                                                                                                                                                                                      |
-| `DiscountSeal`                                                         | Círculo marinho, 80px no celular e 112px no desktop. `prefix`, `value`, `suffix`, `label`. Posicione-o (absolute) sobre a divisa texto/foto.                                                                                                                                                                                                                                                              |
+| `Button`                                                               | `variant`: `primary`, `outline`, `rose` (**só sobre fundo grafite**), `ghost`, `link`, `cart`. `size`: `xs`, `sm`, `md`, `lg`. `arrow` acrescenta "→"; com `asChild`, use `<ButtonArrow />` dentro do filho. Todos com alvo de toque de 44px (o `xs` estende por pseudo-elemento). **Classes extras passadas em `className` vencem as do botão** (`hidden md:inline-flex` esconde o botão no celular). |
+| `Button variant="cart"`                                                | Largura total, outline cinza, ícone à esquerda, 12px caixa alta; hover vira grafite em 200ms. O rótulo pode **quebrar em 2 linhas** em cards estreitos (altura mínima de 48px mantém o alinhamento).                                                                                                                                                                                                      |
+| `DiscountSeal`                                                         | Círculo grafite, 80px no celular e 112px no desktop. `prefix`, `value`, `suffix`, `label`. Posicione-o (absolute) sobre a divisa texto/foto.                                                                                                                                                                                                                                                              |
 | `Badge`                                                                | `tone`: `discount` ("-20%"), `customizable`, `bestseller`, `new`, `ready`.                                                                                                                                                                                                                                                                                                                                |
 | `Rating`                                                               | 5 estrelas de 12px + "(nº)". `showValue` mostra a nota em texto. **Renderiza um `<div>`: nunca dentro de `<p>`.**                                                                                                                                                                                                                                                                                         |
 | `ProductCard`                                                          | `variant="shop"` (home: selo `-N%` calculado de `oldPrice`, Rating, preço + antigo riscado, botão `cart` ou link PERSONALIZAR) ou `"detailed"` (padrão, `/produtos`). `onAddToCart` opcional; sem ele adiciona ao carrinho (zustand) e avisa (se houver provedor de toast).                                                                                                                               |
 | `CategoryTile`                                                         | Tile quadrado (`name`, `href`, `image`, `more`). `CategoryCard` (foto + degradê) continua para outros usos.                                                                                                                                                                                                                                                                                               |
 | `CarouselArrow`                                                        | `appearance="chevron"` (esquerda, sem círculo) ou `"circle"` (direita, branco com borda fina); `direction`.                                                                                                                                                                                                                                                                                               |
-| `CarouselDots`                                                         | `count`, `active`, `onSelect`; ativo caramelo e mais largo; alvo de 44px de altura.                                                                                                                                                                                                                                                                                                                       |
+| `CarouselDots`                                                         | `count`, `active`, `onSelect`; ativo rosé escuro e mais largo; alvo de 44px de altura.                                                                                                                                                                                                                                                                                                                       |
 | `BenefitRow`                                                           | Linha de benefícios do hero (ícone + título 11px + apoio 11px, divisores finos, rola no celular). **O pai em grid/flex precisa de `min-w-0`.**                                                                                                                                                                                                                                                            |
-| `PromoPanels` / `PromoPanel`                                           | Faixa de 3 painéis: `tone="navy" \| "caramel" \| "light"`. O de caramelo usa texto marinho.                                                                                                                                                                                                                                                                                                               |
+| `PromoPanels` / `PromoPanel`                                           | Faixa de 3 painéis: `tone="graphite" \| "rose" \| "light"`. O rosé usa texto grafite.                                                                                                                                                                                                                                                                                                               |
 | `AvatarStack`                                                          | Avatares sobrepostos (decorativo). Combine com `<Rating showValue />`.                                                                                                                                                                                                                                                                                                                                    |
-| `CountBadge`                                                           | Contador circular marinho; "pula" quando muda.                                                                                                                                                                                                                                                                                                                                                            |
+| `CountBadge`                                                           | Contador circular grafite; "pula" quando muda.                                                                                                                                                                                                                                                                                                                                                            |
 | `SectionLink`                                                          | "VER TODOS OS PRODUTOS →" com seta que desliza.                                                                                                                                                                                                                                                                                                                                                           |
-| `Input`, `Select`, `Field`                                             | 44px, borda `field-border`, foco com anel marinho. Colados: `inputJoinedClass` + `buttonJoinedClass`.                                                                                                                                                                                                                                                                                                     |
-| Recipes                                                                | `footerLinkClass`, `socialButtonClass`, `paymentBadgeClass` (footer marinho).                                                                                                                                                                                                                                                                                                                             |
+| `Input`, `Select`, `Field`                                             | 44px, borda `field-border`, foco com anel grafite. Colados: `inputJoinedClass` + `buttonJoinedClass`.                                                                                                                                                                                                                                                                                                     |
+| Recipes                                                                | `footerLinkClass`, `socialButtonClass`, `paymentBadgeClass` (rodapé grafite).                                                                                                                                                                                                                                                                                                                             |
 | `Chip`, `Accordion`, `Modal`, `Drawer`, `Toast`, `Tooltip`, `Skeleton` | Na paleta nova; foco visível.                                                                                                                                                                                                                                                                                                                                                                             |
 
 Convenções: botão carregando usa `data-loading`; chip selecionado usa `selected` + `aria-pressed`; cards clicáveis levam `data-interactive`.
@@ -161,22 +163,16 @@ As páginas `/produtos`, `/carrinho`, `/checkout` e `/personalizar` ainda usam o
 | Antigo         | Agora        | Antigo                             | Agora                             |
 | -------------- | ------------ | ---------------------------------- | --------------------------------- |
 | `ink`          | `text`       | `blush`                            | `sand`                            |
-| `ink-muted`    | `text-muted` | `sage`                             | `caramel`                         |
-| `accent`       | `navy`       | `on-sage`                          | `navy`                            |
-| `accent-hover` | `navy-hover` | `font-display`                     | Poppins                           |
+| `ink-muted`    | `text-muted` | `sage`                             | `rose`                            |
+| `accent`       | `graphite`   | `on-sage`                          | `graphite`                        |
+| `accent-hover` | `graphite-hover` | `font-display`                     | Poppins                           |
 | `on-accent`    | `on-dark`    | `text-h1/h2/h3`, `text-display-xl` | Poppins 700/800, tamanhos menores |
 
-`surface` e `sand` mantêm o nome, mas **já têm os valores novos** (`#F4F4F5` e `#EFE7DD`). `Button variant="accent"` = `primary` e `"secondary"` = `outline`. `text-caption` agora é Inter 400 normal (antes era caixa alta).
-
-## Modo escuro (preparado, não ativado)
-
-`[data-theme="dark"]` já redefine os tokens e passa nos pares principais (texto/fundo 17,0:1; texto suave/fundo 8,4:1; on-dark/navy 9,6:1). Nada define esse atributo hoje.
-
-**Antes de ativar:** footer e barra superior usam `bg-navy` como superfície estrutural, e no escuro `navy` vira o tom claro dos botões. Será preciso um token próprio para essas superfícies.
+`surface` e `sand` mantêm o nome, mas **já têm os valores novos** (`#F4F4F5` e `#F5EBE6`). `Button variant="accent"` = `primary` e `"secondary"` = `outline`. `text-caption` agora é Inter 400 normal (antes era caixa alta).
 
 ## Regras de uso
 
-1. Azul-marinho é estrutura e ação; **caramelo só destaque**, nunca blocos grandes de texto.
+1. Grafite é estrutura e ação; **rosé só destaque**, nunca blocos grandes de texto.
 2. Áreas de toque ≥ 44px (todos os botões, chips, setas e pontos respeitam).
 3. Um único `<h1>` por página; o texto da marca vem de `lib/brand` (`[NOME DA LOJA]`), nunca digitado em componentes.
 4. Preços no formato `R$ 189,90` (`formatPrice`). Preço riscado sempre acompanhado de texto para leitores de tela.
@@ -184,19 +180,7 @@ As páginas `/produtos`, `/carrinho`, `/checkout` e `/personalizar` ainda usam o
 
 ## Vitrine rosé + grafite (home, header e rodapé)
 
-A home e a estrutura do site (barra de aviso, header, rodapé, botão do WhatsApp) seguem uma identidade **rosé + grafite + creme**, medida nos prints de uma referência de e-commerce. As cores azul-marinho e caramelo acima continuam valendo para as demais páginas (produtos, carrinho, checkout, personalizar) até elas serem redesenhadas.
-
-| Classe                                   | Hex                    | Uso                                                                                   |
-| ---------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------- |
-| `bg-rose`                                | `#E6ACA4` Rosé         | Barra de aviso, faixa da newsletter, contador do carrinho, linhas decorativas. **Só fundo e decoração**: o texto sobre ele é grafite |
-| `bg-rose-strong` / `text-rose-strong`    | `#9C5953` Rosé escuro  | Botões, preços, "12x", script e textos pequenos em rosé (5,3:1 no branco)             |
-| `bg-rose-strong-hover`                   | `#864B46`              | Hover dos botões                                                                      |
-| `bg-rose-soft`                           | `#F7E4E0`              | Fundos suaves e hover do botão de contorno                                            |
-| `bg-cream`                               | `#FAF4F0` Creme        | Fundo do hero e dos banners de coleção                                                |
-| `bg-graphite`                            | `#3B3B3B` Grafite      | Header e rodapé                                                                       |
-| `text-on-graphite-muted`                 | `#D4D4D4`              | Links e textos secundários do rodapé                                                  |
-| `text-success`                           | `#1B7F2E`              | "Compra verificada" e botão do WhatsApp                                               |
-| `bg-soldout`                             | `#D10A0A`              | Selo "Esgotado" e botão play dos vídeos                                               |
+A home e a estrutura do site (barra de aviso, header, rodapé, botão do WhatsApp) usam as mesmas cores da tabela acima: **rosé + grafite + creme**.
 
 **Por que dois rosés:** o rosé da referência (`#E6ACA4`) com texto branco dá 1,9:1, abaixo do mínimo de 4,5:1. Ele fica em fundos e decoração; botões, preços e textos pequenos usam o rosé escuro.
 

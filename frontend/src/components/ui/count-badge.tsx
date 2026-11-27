@@ -10,7 +10,7 @@ export interface CountBadgeProps {
 }
 
 /**
- * Contador circular marinho (sobre o ícone do carrinho). Quando o número muda, "pula" (animate-cart-bump,
+ * Contador circular grafite (sobre o ícone do carrinho). Quando o número muda, "pula" (animate-cart-bump,
  * desligado em reduced-motion). O número é decorativo (aria-hidden): descreva a quantidade no rótulo do link do carrinho.
  */
 export function CountBadge({ count, className }: CountBadgeProps) {
@@ -31,7 +31,7 @@ export function CountBadge({ count, className }: CountBadgeProps) {
       data-bump={bump || undefined}
       onAnimationEnd={() => setBump(false)}
       className={cx(
-        'inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-navy px-1 text-badge text-on-dark',
+        'inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-graphite px-1 text-badge text-on-dark',
         bump && 'animate-cart-bump',
         className,
       )}

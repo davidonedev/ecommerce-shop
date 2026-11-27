@@ -17,7 +17,7 @@ export function PersonalizeFontsDemo() {
             <p className="text-caption text-text-muted">
               {font.label} · {font.family}
             </p>
-            <p className={`mt-3 text-h2 text-navy ${fontClass[font.id]}`}>Casa da Ana</p>
+            <p className={`mt-3 text-h2 text-graphite ${fontClass[font.id]}`}>Casa da Ana</p>
           </li>
         ))}
       </ul>

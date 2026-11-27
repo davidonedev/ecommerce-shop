@@ -21,13 +21,13 @@ describe('DiscountSeal', () => {
     expect(screen.getByRole('img', { name: '30% de desconto só hoje' })).toHaveTextContent('30%')
   })
 
-  it('é um círculo marinho; o valor fica em caramelo claro (texto grande sobre marinho)', () => {
+  it('é um círculo grafite; o valor fica em rosé claro (texto grande sobre grafite)', () => {
     const { container } = render(<DiscountSeal />)
 
     const seal = container.firstElementChild as HTMLElement
     expect(seal.className).toContain('rounded-full')
-    expect(seal.className).toContain('bg-navy')
+    expect(seal.className).toContain('bg-graphite')
     expect(seal.className).toContain('md:size-28')
-    expect(screen.getByText('50%').className).toContain('text-caramel-light')
+    expect(screen.getByText('50%').className).toContain('text-rose-soft')
   })
 })

@@ -19,7 +19,7 @@ export interface CategoryTileProps {
 
 /**
  * Tile quadrado de categoria: fundo cinza-claro, raio 8px, imagem centralizada e o nome embaixo, dentro do tile.
- * Hover: sobe 2px e ganha borda marinho. O tile inteiro é um link.
+ * Hover: sobe 2px e ganha borda grafite. O tile inteiro é um link.
  */
 export function CategoryTile({
   name,
@@ -34,7 +34,7 @@ export function CategoryTile({
     <Link href={href} className={cx(categoryTileClass, className)}>
       <div className="absolute inset-x-3 bottom-10 top-3 flex items-center justify-center">
         {more || !image ? (
-          <LayoutGrid aria-hidden strokeWidth={1.25} className="size-9 text-navy" />
+          <LayoutGrid aria-hidden strokeWidth={1.25} className="size-9 text-graphite" />
         ) : (
           <Image
             src={image.src}

@@ -3,18 +3,18 @@ import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { cx, focusRing, focusRingInverse } from './variants'
 
-export type PromoPanelTone = 'navy' | 'caramel' | 'light'
+export type PromoPanelTone = 'graphite' | 'rose' | 'light'
 
 /**
  * Cores por painel (todas verificadas, ver docs/design-tokens.md):
- *  - navy:    texto branco (17:1), apoio on-dark-muted;
- *  - caramel: texto MARINHO (5,5:1). Branco sobre caramelo reprova (3,1:1);
- *  - light:   fundo cinza-claro, texto marinho (15,6:1) e apoio suave (5,6:1).
+ *  - graphite:    texto branco (17:1), apoio on-graphite-muted;
+ *  - rose: texto GRAFITE (5,5:1). Branco sobre rosé reprova (3,1:1);
+ *  - light:   fundo cinza-claro, texto grafite (15,6:1) e apoio suave (5,6:1).
  */
 const toneClass: Record<PromoPanelTone, { box: string; title: string; text: string; ring: string }> = {
-  navy: { box: 'bg-navy text-on-dark', title: 'text-on-dark', text: 'text-on-dark-muted', ring: focusRingInverse },
-  caramel: { box: 'bg-caramel text-navy', title: 'text-navy', text: 'text-navy', ring: focusRing },
-  light: { box: 'bg-surface text-navy', title: 'text-navy', text: 'text-text-muted', ring: focusRing },
+  graphite: { box: 'bg-graphite text-on-dark', title: 'text-on-dark', text: 'text-on-graphite-muted', ring: focusRingInverse },
+  rose: { box: 'bg-rose text-graphite', title: 'text-graphite', text: 'text-graphite', ring: focusRing },
+  light: { box: 'bg-surface text-graphite', title: 'text-graphite', text: 'text-text-muted', ring: focusRing },
 }
 
 export interface PromoPanelProps {

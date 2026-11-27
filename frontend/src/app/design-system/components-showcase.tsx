@@ -68,7 +68,7 @@ function Block({
 }) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-24 py-10">
-      <h3 id={`${id}-title`} className="text-section-title text-navy">
+      <h3 id={`${id}-title`} className="text-section-title text-graphite">
         {title}
       </h3>
       {description ? <p className="mt-1 max-w-2xl text-text-muted">{description}</p> : null}
@@ -94,12 +94,12 @@ function TopSample() {
   return (
     <div className="overflow-hidden rounded-card border border-border">
       {/* Barra superior */}
-      <div className="bg-navy">
+      <div className="bg-graphite">
         <div className="container-page flex min-h-11 items-center justify-between gap-4 py-2">
           <p className="flex-1 text-center text-topbar text-on-dark md:pl-32">
-            Personalize o seu tapete com <span className="text-caramel">frete grátis acima de R$ 299!</span>
+            Personalize o seu tapete com <span className="text-rose">frete grátis acima de R$ 299!</span>
           </p>
-          <Button asChild variant="caramel" size="xs" className="hidden md:inline-flex">
+          <Button asChild variant="rose" size="xs" className="hidden md:inline-flex">
             <Link href="/produtos">
               Fale conosco
               <ButtonArrow />
@@ -111,7 +111,7 @@ function TopSample() {
       {/* Header */}
       <div className="border-b border-border bg-bg">
         <div className="container-page flex min-h-20 items-center justify-between gap-6">
-          <div className="flex items-center gap-2.5 text-navy">
+          <div className="flex items-center gap-2.5 text-graphite">
             <ShoppingBag aria-hidden strokeWidth={1.5} className="size-8" />
             <div>
               <p className="text-price tracking-wide uppercase">[Nome da loja]</p>
@@ -126,8 +126,8 @@ function TopSample() {
                     href="#topo"
                     aria-current={index === 0 ? 'page' : undefined}
                     className={cx(
-                      'inline-flex min-h-11 items-center border-b-2 text-nav text-navy',
-                      index === 0 ? 'border-navy' : 'border-transparent hover:border-field-border',
+                      'inline-flex min-h-11 items-center border-b-2 text-nav text-graphite',
+                      index === 0 ? 'border-graphite' : 'border-transparent hover:border-field-border',
                     )}
                   >
                     {item}
@@ -146,7 +146,7 @@ function TopSample() {
             <a
               href="#topo"
               aria-label="Carrinho: 2 itens, total R$ 189,90"
-              className="inline-flex min-h-11 items-center gap-2 rounded-control px-2 text-navy"
+              className="inline-flex min-h-11 items-center gap-2 rounded-control px-2 text-graphite"
             >
               <span className="relative inline-flex">
                 <ShoppingCart aria-hidden strokeWidth={1.5} className="size-6" />
@@ -171,13 +171,13 @@ function TopSample() {
         />
         <div className="container-page grid items-center gap-8 py-10 md:grid-cols-[54fr_46fr] md:py-14">
           <div className="relative z-10 min-w-0 md:pl-8">
-            <p className="text-overline text-caramel-ink">Bem-vindo à [nome da loja]</p>
-            <p className="mt-3 text-display-hero text-navy">
+            <p className="text-overline text-rose-strong">Bem-vindo à [nome da loja]</p>
+            <p className="mt-3 text-display-hero text-graphite">
               Feito para você.
               <br />
               Do seu jeito.
             </p>
-            <p className="text-script mt-2 text-caramel">Personalizado com carinho!</p>
+            <p className="text-script mt-2 text-rose-strong">Personalizado com carinho!</p>
             <p className="mt-3 max-w-sm text-body text-text-muted">
               Tapetes, bolsas e acessórios com o seu nome, sua foto ou sua arte, produzidos um a um.
             </p>
@@ -237,7 +237,7 @@ function BottomSample() {
     <div className="space-y-12">
       {/* Compre por categoria */}
       <div>
-        <h4 className="text-center text-section-title text-navy">Compre por categoria</h4>
+        <h4 className="text-center text-section-title text-graphite">Compre por categoria</h4>
         <ul className="mt-6 grid grid-cols-4 gap-3 lg:grid-cols-8">
           {categories.slice(0, 7).map((c) => (
             <li key={c.slug}>
@@ -253,7 +253,7 @@ function BottomSample() {
       {/* Mais vendidos */}
       <div>
         <div className="section-head">
-          <h4 className="text-section-title text-navy">Mais vendidos</h4>
+          <h4 className="text-section-title text-graphite">Mais vendidos</h4>
           <SectionLink href="/produtos">Ver todos os produtos</SectionLink>
         </div>
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
@@ -267,10 +267,10 @@ function BottomSample() {
 
       {/* Faixa de 3 painéis */}
       <PromoPanels>
-        <PromoPanel tone="navy" icon={Package} title="Frete grátis" href="/produtos" linkLabel="Comprar agora">
+        <PromoPanel tone="graphite" icon={Package} title="Frete grátis" href="/produtos" linkLabel="Comprar agora">
           Em compras acima de R$ 299
         </PromoPanel>
-        <PromoPanel tone="caramel" icon={Percent} title="Oferta especial" href="/produtos" linkLabel="Ver ofertas">
+        <PromoPanel tone="rose" icon={Percent} title="Oferta especial" href="/produtos" linkLabel="Ver ofertas">
           Até 50% off em tapetes selecionados
         </PromoPanel>
         <PromoPanel tone="light" icon={Gift} title="Clube de vantagens" href="/produtos" linkLabel="Cadastrar grátis">
@@ -282,9 +282,9 @@ function BottomSample() {
       <div className="grid gap-6 rounded-card border border-border p-6 lg:grid-cols-2 lg:items-center">
         <div className="flex flex-wrap items-center gap-5">
           <div className="flex items-center gap-3">
-            <ShieldCheck aria-hidden strokeWidth={1.25} className="size-10 text-navy" />
+            <ShieldCheck aria-hidden strokeWidth={1.25} className="size-10 text-graphite" />
             <div>
-              <p className="text-panel-title text-navy">Milhares de clientes felizes</p>
+              <p className="text-panel-title text-graphite">Milhares de clientes felizes</p>
               <p className="text-small text-text-muted">Peças únicas, clientes satisfeitos.</p>
             </div>
           </div>
@@ -292,7 +292,7 @@ function BottomSample() {
             <AvatarStack avatars={avatars} />
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-section-title text-navy">4,9/5</span>
+                <span className="text-section-title text-graphite">4,9/5</span>
                 <Rating value={4.9} />
               </div>
               <p className="text-caption text-text-muted">Baseado em 2.500+ avaliações</p>
@@ -305,7 +305,7 @@ function BottomSample() {
             event.preventDefault()
           }}
         >
-          <p className="text-panel-title text-navy">Assine nossa newsletter</p>
+          <p className="text-panel-title text-graphite">Assine nossa newsletter</p>
           <p className="mb-3 text-small text-text-muted">Novidades e lançamentos, direto no seu e-mail.</p>
           <div className="flex">
             <label htmlFor="ds-newsletter" className="sr-only">
@@ -327,14 +327,14 @@ function BottomSample() {
       </div>
 
       {/* Footer */}
-      <div className="rounded-card bg-navy p-8 text-on-dark">
+      <div className="rounded-card bg-graphite p-8 text-on-dark">
         <div className="grid gap-8 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5">
               <ShoppingBag aria-hidden strokeWidth={1.5} className="size-8" />
               <p className="text-price tracking-wide uppercase">[Nome da loja]</p>
             </div>
-            <p className="mt-3 max-w-xs text-small text-on-dark-muted">
+            <p className="mt-3 max-w-xs text-small text-on-graphite-muted">
               Acessórios personalizados com o seu nome, sua foto ou sua arte.
             </p>
             <div className="mt-4 flex gap-2">
@@ -364,8 +364,8 @@ function BottomSample() {
             </div>
           ))}
         </div>
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-on-dark-muted/30 pt-5">
-          <p className="text-small text-on-dark-muted">© 2026 [Nome da loja]. Todos os direitos reservados.</p>
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-on-graphite-muted/30 pt-5">
+          <p className="text-small text-on-graphite-muted">© 2026 [Nome da loja]. Todos os direitos reservados.</p>
           <ul aria-label="Formas de pagamento" className="flex flex-wrap gap-2">
             {['Pix', 'Visa', 'Mastercard', 'Elo', 'Amex', 'Boleto'].map((method) => (
               <li key={method} className={paymentBadgeClass}>
@@ -397,7 +397,7 @@ export function ComponentsShowcase() {
       <Block
         id="botoes"
         title="Botões"
-        description="Marinho cheio, contorno, caramelo (sobre fundo marinho), fantasma, link e o botão do card. Todos com área de toque de 44px."
+        description="Grafite cheio, contorno, rosé (sobre fundo grafite), fantasma, link e o botão do card. Todos com área de toque de 44px."
       >
         <div className="space-y-6">
           <div className="flex flex-wrap items-center gap-3">
@@ -409,11 +409,11 @@ export function ComponentsShowcase() {
             <Button variant="ghost">Fantasma</Button>
             <Button variant="link">Link</Button>
           </div>
-          <div className="flex flex-wrap items-center gap-3 rounded-card bg-navy p-4">
-            <Button variant="caramel" size="xs" arrow>
+          <div className="flex flex-wrap items-center gap-3 rounded-card bg-graphite p-4">
+            <Button variant="rose" size="xs" arrow>
               Fale conosco
             </Button>
-            <Button variant="caramel" arrow>
+            <Button variant="rose" arrow>
               Ver ofertas
             </Button>
           </div>
@@ -449,7 +449,7 @@ export function ComponentsShowcase() {
               <Plus aria-hidden strokeWidth={1.5} className="size-5" />
             </IconButton>
             <IconButton label="Favoritar" pressed>
-              <Heart aria-hidden strokeWidth={1.5} className="size-5 fill-navy text-navy" />
+              <Heart aria-hidden strokeWidth={1.5} className="size-5 fill-graphite text-graphite" />
             </IconButton>
             <IconButton label="Carregando" loading>
               <Plus aria-hidden className="size-5" />
@@ -461,7 +461,7 @@ export function ComponentsShowcase() {
       <Block
         id="selos"
         title="Selos, chips e carrossel"
-        description="Selo circular de desconto, badges (-20% marinho, PERSONALIZÁVEL com contorno caramelo), chips e os controles do carrossel."
+        description="Selo circular de desconto, badges (-20% grafite, PERSONALIZÁVEL com contorno rosé), chips e os controles do carrossel."
       >
         <div className="space-y-6">
           <div className="flex flex-wrap items-center gap-6">
@@ -491,7 +491,7 @@ export function ComponentsShowcase() {
           </div>
           <div className="flex flex-wrap items-center gap-6">
             <span className="relative inline-flex">
-              <ShoppingCart aria-hidden strokeWidth={1.5} className="size-7 text-navy" />
+              <ShoppingCart aria-hidden strokeWidth={1.5} className="size-7 text-graphite" />
               <CountBadge count={3} className="absolute -right-2 -top-2" />
             </span>
             <SectionLink href="/produtos">Ver todos os produtos</SectionLink>

@@ -21,7 +21,7 @@ interface ToastItem extends ToastInput {
 const ToastContext = createContext<((toast: ToastInput) => void) | null>(null)
 
 const toneIcon = {
-  success: <CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0 text-navy" />,
+  success: <CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0 text-graphite" />,
   info: <Info aria-hidden className="mt-0.5 size-5 shrink-0 text-text-muted" />,
   error: <TriangleAlert aria-hidden className="mt-0.5 size-5 shrink-0 text-danger" />,
 } as const

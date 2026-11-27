@@ -39,9 +39,9 @@ export function BenefitRow({ items, label = 'Benefícios', className }: BenefitR
           key={title}
           className="flex shrink-0 snap-start items-center gap-2.5 border-l border-border px-4 first:border-l-0 first:pl-0"
         >
-          <Icon aria-hidden strokeWidth={1.5} className="size-6 shrink-0 text-navy" />
+          <Icon aria-hidden strokeWidth={1.5} className="size-6 shrink-0 text-graphite" />
           <p className="min-w-0">
-            <span className="block text-benefit-title text-navy">{title}</span>
+            <span className="block text-benefit-title text-graphite">{title}</span>
             <span className="block text-benefit-text text-text-muted">{description}</span>
           </p>
         </li>

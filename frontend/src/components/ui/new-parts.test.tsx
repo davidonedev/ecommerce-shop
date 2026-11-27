@@ -46,26 +46,26 @@ describe('BenefitRow', () => {
 })
 
 describe('PromoPanel', () => {
-  it('painel de oferta (caramelo) usa texto MARINHO, nunca branco (branco sobre caramelo reprova)', () => {
+  it('painel de oferta (rosé) usa texto GRAFITE, nunca branco (branco sobre rosé reprova)', () => {
     render(
       <PromoPanels>
-        <PromoPanel tone="caramel" icon={Percent} title="Oferta especial" href="/produtos" linkLabel="Ver ofertas">
+        <PromoPanel tone="rose" icon={Percent} title="Oferta especial" href="/produtos" linkLabel="Ver ofertas">
           Até 50% off em tapetes selecionados
         </PromoPanel>
       </PromoPanels>,
     )
 
     const panel = screen.getByRole('heading', { name: 'Oferta especial' }).parentElement?.parentElement as HTMLElement
-    expect(panel.className).toContain('bg-caramel')
-    expect(panel.className).toContain('text-navy')
+    expect(panel.className).toContain('bg-rose')
+    expect(panel.className).toContain('text-graphite')
     expect(panel.className).not.toContain('text-on-dark')
-    expect(screen.getByText('Até 50% off em tapetes selecionados').className).toContain('text-navy')
+    expect(screen.getByText('Até 50% off em tapetes selecionados').className).toContain('text-graphite')
   })
 
-  it('painel marinho tem texto claro e anel de foco claro; o cinza-claro usa texto marinho', () => {
+  it('painel grafite tem texto claro e anel de foco claro; o cinza-claro usa texto grafite', () => {
     render(
       <>
-        <PromoPanel tone="navy" icon={Truck} title="Frete grátis" href="/produtos" linkLabel="Comprar agora">
+        <PromoPanel tone="graphite" icon={Truck} title="Frete grátis" href="/produtos" linkLabel="Comprar agora">
           Acima de R$ 299
         </PromoPanel>
         <PromoPanel tone="light" icon={Gift} title="Clube" href="/em-breve" linkLabel="Cadastrar grátis">
@@ -74,11 +74,11 @@ describe('PromoPanel', () => {
       </>,
     )
 
-    const navyLink = screen.getByRole('link', { name: 'Comprar agora' })
-    expect(navyLink.className).toContain('focus-visible:outline-caramel-light')
-    expect(navyLink).toHaveAttribute('href', '/produtos')
-    expect(screen.getByText('Acima de R$ 299').className).toContain('text-on-dark-muted')
-    expect(screen.getByRole('link', { name: 'Cadastrar grátis' }).className).toContain('text-navy')
+    const graphiteLink = screen.getByRole('link', { name: 'Comprar agora' })
+    expect(graphiteLink.className).toContain('focus-visible:outline-rose-soft')
+    expect(graphiteLink).toHaveAttribute('href', '/produtos')
+    expect(screen.getByText('Acima de R$ 299').className).toContain('text-on-graphite-muted')
+    expect(screen.getByRole('link', { name: 'Cadastrar grátis' }).className).toContain('text-graphite')
   })
 })
 
@@ -92,7 +92,7 @@ describe('CategoryTile', () => {
     expect(link.className).toContain('aspect-square')
     expect(link.className).toContain('bg-surface')
     expect(link.className).toContain('rounded-card')
-    expect(link.className).toContain('hover:border-navy')
+    expect(link.className).toContain('hover:border-graphite')
     expect(screen.getByText(c.name).className).toContain('text-tile-name')
   })
 
@@ -130,13 +130,13 @@ describe('CountBadge', () => {
     expect(badge().className).not.toContain('animate-cart-bump')
   })
 
-  it('é um círculo marinho decorativo (o rótulo do carrinho é quem informa a quantidade)', () => {
+  it('é um círculo grafite decorativo (o rótulo do carrinho é quem informa a quantidade)', () => {
     const { container } = render(<CountBadge count={2} />)
 
     const badge = container.firstElementChild as HTMLElement
     expect(badge).toHaveAttribute('aria-hidden', 'true')
     expect(badge.className).toContain('rounded-full')
-    expect(badge.className).toContain('bg-navy')
+    expect(badge.className).toContain('bg-graphite')
   })
 })
 

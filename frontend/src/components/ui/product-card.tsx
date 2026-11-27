@@ -108,7 +108,7 @@ function ShopCard({
 
       <div className="flex flex-1 flex-col gap-2 p-3">
         <Heading className="text-product-name text-text">
-          <Link href={href} className="hover:text-navy-hover hover:underline hover:underline-offset-4">
+          <Link href={href} className="hover:text-graphite-hover hover:underline hover:underline-offset-4">
             {product.name}
           </Link>
         </Heading>
@@ -192,13 +192,13 @@ function DetailedCard({ product, priority, Heading, className }: InnerProps) {
           onClick={() => setFavorite((v) => !v)}
           className="absolute right-2 top-2 bg-bg/90 hover:bg-bg"
         >
-          <Heart aria-hidden strokeWidth={1.5} className={cx('size-5', favorite && 'fill-navy text-navy')} />
+          <Heart aria-hidden strokeWidth={1.5} className={cx('size-5', favorite && 'fill-graphite text-graphite')} />
         </IconButton>
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-4">
         <Heading className="text-product-name text-text">
-          <Link href={href} className="hover:text-navy-hover hover:underline hover:underline-offset-4">
+          <Link href={href} className="hover:text-graphite-hover hover:underline hover:underline-offset-4">
             {product.name}
           </Link>
         </Heading>

@@ -22,14 +22,14 @@ describe('CarouselDots', () => {
     expect(buttons[1]).not.toHaveAttribute('aria-current')
   })
 
-  it('troca o ativo ao clicar e pelo teclado (Tab + Enter), e o ativo fica caramelo e mais largo', async () => {
+  it('troca o ativo ao clicar e pelo teclado (Tab + Enter), e o ativo fica rosé e mais largo', async () => {
     render(<Dots />)
 
     await userEvent.click(screen.getByRole('button', { name: 'Ir para o slide 3 de 3' }))
     const buttons = screen.getAllByRole('button')
     expect(buttons[2]).toHaveAttribute('aria-current', 'true')
     expect(buttons[0]).not.toHaveAttribute('aria-current')
-    expect(buttons[2].firstElementChild?.className).toContain('bg-caramel')
+    expect(buttons[2].firstElementChild?.className).toContain('bg-rose')
     expect(buttons[2].firstElementChild?.className).toContain('w-6')
     expect(buttons[0].firstElementChild?.className).toContain('bg-field-border')
 

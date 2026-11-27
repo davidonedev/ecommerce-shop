@@ -49,7 +49,7 @@ export interface CarouselDotsProps {
   className?: string
 }
 
-/** Pontos pequenos e centralizados; o ativo é caramelo e mais largo. Cada ponto tem alvo de 44px de altura. */
+/** Pontos pequenos e centralizados; o ativo é rosé e mais largo. Cada ponto tem alvo de 44px de altura. */
 export function CarouselDots({ count, active, onSelect, label = 'Escolher slide', className }: CarouselDotsProps) {
   return (
     <div role="group" aria-label={label} className={cx('flex items-center justify-center', className)}>

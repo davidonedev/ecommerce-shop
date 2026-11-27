@@ -38,7 +38,7 @@ export function DrawerContent({
         {...(description ? {} : { 'aria-describedby': undefined })}
       >
         <div className="flex items-center justify-between gap-4 border-b border-border px-6 py-3">
-          <DialogPrimitive.Title className={hideTitle ? 'sr-only' : 'text-section-title text-navy'}>
+          <DialogPrimitive.Title className={hideTitle ? 'sr-only' : 'text-section-title text-graphite'}>
             {title}
           </DialogPrimitive.Title>
           <DialogPrimitive.Close asChild>
